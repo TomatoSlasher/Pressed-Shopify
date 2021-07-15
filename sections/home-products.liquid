@@ -1,0 +1,94 @@
+<div class="featured-products">
+  {% for product in collections.all.products %} {% if product.tags contains
+  'bottle' %}
+
+  <div class="featured-item">
+    <img
+      class="featured-img"
+      src="{{ product.featured_image | img_url: '600x600' }}"
+      alt=""
+    />
+    <div class="featured-text">
+      <div class="featured-title-price">
+        <h2>{{ product.title }}</h2>
+        <h4>{{ product.price | money }}</h4>
+      </div>
+
+      <form class="featured-cart-form" method="post" action="/cart/add">
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.variants.first.id }}"
+        />
+
+        <!-- <div class="spin">
+          <span>&ndash;</span
+          ><input
+            class="featured-cart-counter"
+            min="1"
+            type="number"
+            id="quantity"
+            name="quantity"
+            value="1"
+          /><span>+</span>
+        </div> -->
+        <div>
+          <button
+            type="button"
+            onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+          >
+            -
+          </button>
+
+          <input
+            class="featured-cart-counter"
+            min="1"
+            type="number"
+            id="quantity"
+            name="quantity"
+            value="1"
+          />
+
+          <button
+            type="button"
+            onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+          >
+            +
+          </button>
+        </div>
+        <!-- <input
+          class="featured-cart-counter"
+          min="1"
+          type="number"
+          id="quantity"
+          name="quantity"
+          value="1"
+        /> -->
+        <input
+          class="add-to-cart"
+          type="submit"
+          value="Add to cart"
+          class="btn"
+        />
+      </form>
+
+      <div class="featured-more-info">
+        <p>More info</p>
+      </div>
+    </div>
+  </div>
+
+  {% endif %} {% endfor %}
+</div>
+
+{% schema %}
+{
+    "presets": [
+        {
+          "name": "HomeProducts"
+
+
+        }
+      ]
+}
+{% endschema %}
