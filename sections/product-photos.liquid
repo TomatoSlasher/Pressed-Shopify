@@ -1,0 +1,20 @@
+<div class="product-photos-container">
+  <img class='juice-photos salad-img ' src="{{ "salad.jpg" | asset_url }}"
+  alt="" /> <img class='juice-photos lemon-img' src="{{
+    "lemon.jpg" | asset_url
+  }}" alt="" />
+  <div class="text-container">
+    <h1>Routine Wellness</h1>
+    <p>
+      Whether you crave a monthly reset or daily wellness support, our half-day
+      fasts, full-day cleanses and everyday routines deliver high-powered
+      nutrition to fuel your best, most vibrant life.
+    </p>
+    <a href="/collections/all">Shop Juices</a>
+  </div>
+</div>
+
+{% schema %} { "presets": [ { "name": "Product Photos" } ] } {% endschema %}
+{%stylesheet %} .product-photos-container{ height:50rem; margin-top: 5rem; }
+.juice-photos{ position: absolute; } .salad-img { z-index:1; width: 25rem; left:
+10rem } .lemon-img { width: 40rem; } {%endstylesheet %}
