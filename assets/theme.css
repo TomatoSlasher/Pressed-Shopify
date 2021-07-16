@@ -9152,8 +9152,10 @@ hr {
   width: 10rem;
   padding: 1rem 2rem;
   border-radius: 30px;
-  color: black;
+  color: white !important;
   text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
 }
 .hero-img {
   width: 35rem;
