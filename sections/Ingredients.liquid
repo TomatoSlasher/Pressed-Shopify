@@ -1,29 +1,69 @@
 <div class="ingredients-wrapper">
+  <svg
+    class="wave-1"
+    version="1.1"
+    id="curved-border"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 1600 116.19"
+    xml:space="preserve"
+  >
+    <path
+      class="wave"
+      d="M0.1,119.43V67.45c0,0,99.87,71.51,322.45,8.12c5.56-1.66,92.01-26.52,125.74-35.72
+	c77.28-21.08,219.28-41.4,311.28-38.34c233,7.77,323.98,82.1,469.23,96.61c149.64,14.94,288.45-12.46,371.26-36.99v55.34L0.1,119.43
+	z"
+    />
+  </svg>
   <h1 class="ingredients-h1">
     <span class="all-ingredients"> All Natural</span>
     <span class="ingredients-span">Ingredients</span>
   </h1>
   <img class='ingredients-img ingredients-img' src="{{
-    "orangenobg.png" | asset_url
+    "strawberrynobg.png" | asset_url
   }}" alt="" />
   <div class="ingredient-text-container">
-    <h1 class="ingredients-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    </h1>
+    <p class="ingredients-text">
+      Our entirely plant-based juice is designed to make plant-forward living
+      accessible
+    </p>
   </div>
+  <svg
+    class="wave-2"
+    version="1.1"
+    id="curved-border"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 1600 116.19"
+    xml:space="preserve"
+  >
+    <path
+      class="wave"
+      d="M0.1,119.43V67.45c0,0,99.87,71.51,322.45,8.12c5.56-1.66,92.01-26.52,125.74-35.72
+	c77.28-21.08,219.28-41.4,311.28-38.34c233,7.77,323.98,82.1,469.23,96.61c149.64,14.94,288.45-12.46,371.26-36.99v55.34L0.1,119.43
+	z"
+    />
+  </svg>
 </div>
 
 {% schema %} { "presets": [ { "name": "Ingredients" } ] } {% endschema %}
 {%stylesheet %} .ingredients-wrapper { background-color: #F58153; position:
-relative; height: 60rem; } .ingredients-h1{ position: absolute; font-size:
-115px; !important; width : 55rem; transform: rotate(-10deg); top: 2rem; left :
--2rem} .all-ingredients{ color: #F58153 !important; text-shadow: 0 0 2px black,
-0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0
-2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px
-black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px
-black, 0 0 2px black, 0 0 2px black, 0 0 2px black; } .ingredients-span{
-padding-left: 5rem; } .ingredients-img{ width: 40rem; position: absolute; }
-.ingredient-text-container { position: relative; width: 100%; height: 100vh;}
-.ingredients-text{ width: 30rem; position: absolute; top: 70%; left: 50%;
-transform: translate(-50%, -50%); text-align: center; } .ingredients-img-2{
-right: -5rem; transform: rotate(-25deg); } {%endstylesheet %}
+relative; height: 55rem; margin-top: 5rem; } .ingredients-h1{ line-height: 7rem
+; position: absolute; font-size: 115px; !important; width : 55rem; transform:
+rotate(-10deg); top: 8rem; left : -2rem} .all-ingredients{ color: #F58153
+!important; text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px
+white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px
+white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px
+white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px
+white, 0 0 2px white; } .ingredients-span{ padding-left: 5rem; color: white
+!important;} .ingredients-img{ width: 40rem; position: absolute; right: -9rem;
+transform: rotate(25deg); bottom : 5rem; } .ingredient-text-container {
+position: relative; width: 100%; height: 100vh;} .ingredients-text{ width:
+30rem; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%
+); text-align: center; color: white !important; font-size: 30px; font-weight:
+bold; }.wave-1{ transform: rotate(180deg); } .wave-2 { bottom: 0; position:
+absolute; width: 100vw; } path { fill: #F6F6F6; } {%endstylesheet %}
