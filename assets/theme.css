@@ -9143,14 +9143,12 @@ hr {
 }
 .hero-a-container {
   text-align: center;
-
-
 }
-.hero-a-container a{
-color:white;
+.hero-a-container a {
+  color: white;
 }
 .hero-text-container a {
-  background-color: #F58153;
+  background-color: #f58153;
   width: 10rem;
   padding: 1rem 2rem;
   border-radius: 30px;
@@ -9166,12 +9164,12 @@ color:white;
 }
 .hero-blue-komb {
   transform: rotate(-10deg);
-  top: -2rem
+  top: -2rem;
 }
 .hero-red-komb {
   right: -5rem;
   transform: rotate(10deg);
-  top: -2rem
+  top: -2rem;
 }
 .hero-yellow-komb {
   right: -10rem;
@@ -9183,4 +9181,6 @@ color:white;
   top: 10rem;
   transform: rotate(-30deg);
 }
-
+.imag-bar--{
+transform: rotate(-15deg);
+}
