@@ -1,0 +1,96 @@
+<div class='main-content-container'>
+    <img
+      class="product-img"
+      src="{{ product.featured_image | img_url: '600x600' }}"
+      alt="product-img"
+    />
+    <div class='product-text-container'>
+        <h2>{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <p>{{product.price | money}}</p>
+        <div class='cart-form'>
+            <form class="featured-cart-form" method="post" action="/cart/add">
+                <input
+                type="hidden"
+                name="id"
+                value="{{ product.variants.first.id }}"
+                />
+                <div class="cart-counter-wrapper">
+                <button
+                    class="cart-btn"
+                    type="button"
+                    onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+                >
+                    -
+                </button>
+                <input
+                    class="cart-counter"
+                    min="1"
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    value="1"
+                />
+                <button
+                    class="cart-btn"
+                    type="button"
+                    onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+                >
+                    +
+                </button>
+                </div>
+                <input
+                class="add-to-cart"
+                type="submit"
+                value="Add to cart"
+                class="btn"
+                />
+            </form>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% stylesheet %}
+    .main-content-container{
+        display: flex;
+    }
+    input {
+        text-align: center;
+    }
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    }
+    .add-to-cart{ outline: inherit;
+        border: none;
+        background-color: var(--btn);
+        font-weight: bold;
+        margin-right: 0.5rem;
+        padding: .75rem 1rem;
+        border-radius: 5px;
+        color:white;
+    }
+    .cart-counter-wrapper{
+        background-color:#EFEFEF;
+        border-radius: 5px;
+    }
+    .cart-counter{
+        width:4rem;
+        background-color:#EFEFEF;
+        margin: 0;
+        padding: .75rem 1rem;
+        border: none;
+    }
+    .cart-btn{
+        border:none;
+        margin: 0;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: .75rem 1rem;
+    }
+{% endstylesheet %}

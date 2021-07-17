@@ -69,11 +69,7 @@
             "settings": {}
           }
         },
-        "block_order": [
-          "quotes-0",
-          "quotes-1",
-          "quotes-2"
-        ],
+        "block_order": ["quotes-0", "quotes-1", "quotes-2"],
         "settings": {
           "title": ""
         }
@@ -94,11 +90,7 @@
             "settings": {}
           }
         },
-        "block_order": [
-          "image-bar-0",
-          "image-bar-1",
-          "image-bar-2"
-        ],
+        "block_order": ["image-bar-0", "image-bar-1", "image-bar-2"],
         "settings": {}
       },
       "footer": {
@@ -113,10 +105,7 @@
             "settings": {}
           }
         },
-        "block_order": [
-          "footer-0",
-          "footer-1"
-        ],
+        "block_order": ["footer-0", "footer-1"],
         "settings": {
           "show_payment_icons": true
         }
@@ -203,11 +192,7 @@
               "settings": {}
             }
           },
-          "block_order": [
-            "quotes-0",
-            "quotes-1",
-            "quotes-2"
-          ],
+          "block_order": ["quotes-0", "quotes-1", "quotes-2"],
           "settings": {
             "title": ""
           }
@@ -228,11 +213,7 @@
               "settings": {}
             }
           },
-          "block_order": [
-            "image-bar-0",
-            "image-bar-1",
-            "image-bar-2"
-          ],
+          "block_order": ["image-bar-0", "image-bar-1", "image-bar-2"],
           "settings": {}
         },
         "footer": {
@@ -247,10 +228,7 @@
               "settings": {}
             }
           },
-          "block_order": [
-            "footer-0",
-            "footer-1"
-          ],
+          "block_order": ["footer-0", "footer-1"],
           "settings": {
             "show_payment_icons": true
           }
@@ -350,10 +328,7 @@
               }
             }
           },
-          "block_order": [
-            "slideshow-0",
-            "1492095993817"
-          ],
+          "block_order": ["slideshow-0", "1492095993817"],
           "settings": {
             "slideshow_height": "medium",
             "text_size": "medium",
@@ -405,9 +380,7 @@
               "settings": {}
             }
           },
-          "block_order": [
-            "1492033877875-0"
-          ],
+          "block_order": ["1492033877875-0"],
           "settings": {}
         },
         "1492033924902": {
@@ -422,9 +395,7 @@
               }
             }
           },
-          "block_order": [
-            "1492033924902-0"
-          ],
+          "block_order": ["1492033924902-0"],
           "settings": {
             "title": ""
           }
@@ -492,11 +463,7 @@
               "settings": {}
             }
           },
-          "block_order": [
-            "link_list",
-            "text",
-            "newsletter"
-          ],
+          "block_order": ["link_list", "text", "newsletter"],
           "settings": {
             "color_footer_bg": "#f8f8f8",
             "color_footer_text": "#6d6d6d"
