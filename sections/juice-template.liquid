@@ -1,15 +1,16 @@
 <div class='main-content-container'>
+
     <img
       class="product-img"
       src="{{ product.featured_image | img_url: '600x600' }}"
       alt="product-img"
     />
     <div class='product-text-container'>
-        <h2>{{product.title}}</h2>
-        <p>{{product.description}}</p>
-        <p>{{product.price | money}}</p>
+        <h2 class='product-template-title'>{{product.title}}</h2>
+        <p class='product-template-desc'>{{product.description}}</p>
+        <h4 class='product-template-price'>{{product.price | money}}</h4>
         <div class='cart-form'>
-            <form class="featured-cart-form" method="post" action="/cart/add">
+            <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
                 <input
                 type="hidden"
                 name="id"
@@ -40,7 +41,7 @@
                 </button>
                 </div>
                 <input
-                class="add-to-cart"
+                class="add-to-cart template-cart"
                 type="submit"
                 value="Add to cart"
                 class="btn"
@@ -56,41 +57,43 @@
 {% stylesheet %}
     .main-content-container{
         display: flex;
+        justify-content: space-between;
+
+
     }
-    input {
-        text-align: center;
+    .product-text-container{
+        background-color: #f58153;
+        width: 40vw;
+        padding: 3rem 4rem;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
     }
-    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
+
+    .product-img{
+        margin-left: 5rem;
     }
-    .add-to-cart{ outline: inherit;
-        border: none;
-        background-color: var(--btn);
-        font-weight: bold;
-        margin-right: 0.5rem;
-        padding: .75rem 1rem;
-        border-radius: 5px;
-        color:white;
+    .product-template-title{
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #011C28
+    }
+    .product-cart-form{
+        justify-content: center;
+
+    }
+    .template-cart{
+        background-color: #011C28;
+        width: 16rem;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+
     }
     .cart-counter-wrapper{
-        background-color:#EFEFEF;
-        border-radius: 5px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
-    .cart-counter{
-        width:4rem;
-        background-color:#EFEFEF;
-        margin: 0;
-        padding: .75rem 1rem;
-        border: none;
+    .main-content{
+        padding: 0 !important;
     }
-    .cart-btn{
-        border:none;
-        margin: 0;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        padding: .75rem 1rem;
-    }
+
 {% endstylesheet %}
