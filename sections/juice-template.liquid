@@ -9,27 +9,18 @@
     <div class='product-text-container'>
         <h2 class='product-template-title'>{{product.title}}</h2>
         <p class='product-template-desc'>{{product.description}}</p>
-        <h4 class='product-template-price'>{{product.price | money}}</h4>
-       <div class="hungry">
-        {% for variant in product.variants %}
-                 <div class="selection">
-                <input id="{{variant.title}}" name="variant" type="radio" value="{{ variant.id }}">
-                <label for="{{variant.title}}">{{variant.title}}</label>
-            </div>
-            {% endfor %}
-
-
-</div>
-
-        {% comment %} <select class='variant-selector' name="id">
+        <h4>{{product.options}}</h4>
+       <div class="variant-container">
             {% for variant in product.variants %}
-                <option value="{{ variant.id }}"
-                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-                >
-                {{ variant.title }} - {{ variant.price | money }}
-                </option>
+                    <div class="selection">
+                    <input id="{{variant.title}}"  name="variant" type="radio" value="{{ variant.id }}">
+                    <label for="{{variant.title}}">{{variant.title}}</label>
+                </div>
             {% endfor %}
-        </select> {% endcomment %}
+        </div>
+
+        <h4 class='product-template-price'>{{product.price | money}}</h4>
+
         <div class='cart-form'>
             <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
                 <input
@@ -70,8 +61,6 @@
                 />
             </form>
         </div>
-
-
     </div>
 
 </div>
@@ -112,37 +101,41 @@
 
     }
     .cart-counter-wrapper{
-        border-top-right-radius: 10pxpx;
-        border-bottom-right-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
     .main-content{
         padding: 0 !important;
     }
-    .hungry .selection {
-  margin-bottom: 1em;
-}
+    .variant-container{
+        display:flex;
+    }
+    .variant-container .selection {
+    margin-bottom: 1.25rem;
+    margin-right: 0.5em;
 
-.hungry .selection label {
-  display: inline-block;
-  width:8em;
-  background-color: #42b4d6;
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 0.5em;
-  cursor: pointer;
-}
+    }
 
-.hungry .selection label:hover {
-  background-color: #5fc0dc;
-}
+    .variant-container .selection label {
+    width:8em;
+    border: 1px solid #011C28;
+    border-radius: 5px;
+    padding: 0.5em;
+    cursor: pointer;
+    }
 
-.hungry .selection input[type=radio] {
-  display: none;
-}
+    .variant-container .selection label:hover {
+    background-color: #fca887;
+    }
 
-.hungry .selection input[type=radio]:checked ~ label {
-  background-color: #f1592a;
-}
+    .variant-container .selection input[type=radio] {
+    display: none;
+    }
+
+    .variant-container .selection input[type=radio]:checked ~ label {
+    background-color: #011C28;
+    color: white;
+    }
 
 {% endstylesheet %}
 <script>
