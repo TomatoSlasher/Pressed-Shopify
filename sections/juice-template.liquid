@@ -10,7 +10,18 @@
         <h2 class='product-template-title'>{{product.title}}</h2>
         <p class='product-template-desc'>{{product.description}}</p>
         <h4 class='product-template-price'>{{product.price | money}}</h4>
-        <select class='variant-selector' name="id">
+       <div class="hungry">
+        {% for variant in product.variants %}
+                 <div class="selection">
+                <input id="{{variant.title}}" name="variant" type="radio" value="{{ variant.id }}">
+                <label for="{{variant.title}}">{{variant.title}}</label>
+            </div>
+            {% endfor %}
+
+
+</div>
+
+        {% comment %} <select class='variant-selector' name="id">
             {% for variant in product.variants %}
                 <option value="{{ variant.id }}"
                 {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
@@ -18,7 +29,7 @@
                 {{ variant.title }} - {{ variant.price | money }}
                 </option>
             {% endfor %}
-        </select>
+        </select> {% endcomment %}
         <div class='cart-form'>
             <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
                 <input
@@ -107,14 +118,42 @@
     .main-content{
         padding: 0 !important;
     }
+    .hungry .selection {
+  margin-bottom: 1em;
+}
+
+.hungry .selection label {
+  display: inline-block;
+  width:8em;
+  background-color: #42b4d6;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.hungry .selection label:hover {
+  background-color: #5fc0dc;
+}
+
+.hungry .selection input[type=radio] {
+  display: none;
+}
+
+.hungry .selection input[type=radio]:checked ~ label {
+  background-color: #f1592a;
+}
 
 {% endstylesheet %}
 <script>
 
-$('select').on('change', '', function (e) {
-    var selectedID = $("select[name='id']").val();
-   document.getElementById("cart-variant").value = `${selectedID}`;
 
+    $('input[type=radio][name=variant]').change(function() {
+    const selectedID = $("input[name='variant']:checked").val();
+
+    document.getElementById("cart-variant").value = `${selectedID}`;
 });
+
+
 
 </script>
