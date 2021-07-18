@@ -1,20 +1,31 @@
 <div class='main-content-container'>
-
-    <img
-      class="product-img"
-      src="{{ product.featured_image | img_url: '600x600' }}"
-      alt="product-img"
-    />
+    <div class='product-img-container'>
+        <img
+        class="product-img"
+        src="{{ product.featured_image | img_url: '600x600' }}"
+        alt="product-img"
+        />
+    </div>
     <div class='product-text-container'>
         <h2 class='product-template-title'>{{product.title}}</h2>
         <p class='product-template-desc'>{{product.description}}</p>
         <h4 class='product-template-price'>{{product.price | money}}</h4>
+        <select class='variant-selector' name="id">
+            {% for variant in product.variants %}
+                <option value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                >
+                {{ variant.title }} - {{ variant.price | money }}
+                </option>
+            {% endfor %}
+        </select>
         <div class='cart-form'>
             <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
                 <input
                 type="hidden"
                 name="id"
-                value="{{ product.variants.first.id }}"
+                id='cart-variant'
+                value="{{  product.variants.first.id  }}"
                 />
                 <div class="cart-counter-wrapper">
                 <button
@@ -61,13 +72,14 @@
 
 
     }
+    .product-img-container{
+      background-color: #fca887;
+      width: 60%;
+    }
     .product-text-container{
         background-color: #f58153;
         width: 40vw;
         padding: 3rem 4rem;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-
     }
 
     .product-img{
@@ -89,11 +101,20 @@
 
     }
     .cart-counter-wrapper{
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
+        border-top-right-radius: 10pxpx;
+        border-bottom-right-radius: 10px;
     }
     .main-content{
         padding: 0 !important;
     }
 
 {% endstylesheet %}
+<script>
+
+$('select').on('change', '', function (e) {
+    var selectedID = $("select[name='id']").val();
+   document.getElementById("cart-variant").value = `${selectedID}`;
+
+});
+
+</script>
