@@ -1,11 +1,11 @@
-(function() {
+(function () {
   var selectors = {
-    loginModal: '#LoginModal',
-    loginField: '[data-login-field]'
+    loginModal: "#LoginModal",
+    loginField: "[data-login-field]",
   };
 
   var data = {
-    formError: 'data-error'
+    formError: "data-error",
   };
 
   var loginModal = document.querySelector(selectors.loginModal);
@@ -15,8 +15,8 @@
     return;
   }
 
-  var passwordModal = new window.Modals('LoginModal', 'login-modal', {
-    focusOnOpen: 'Password'
+  var passwordModal = new window.Modals("LoginModal", "login-modal", {
+    focusOnOpen: "Password",
   });
 
   // Open modal if errors exist

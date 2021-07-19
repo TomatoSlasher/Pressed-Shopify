@@ -1,12 +1,14 @@
+
+
 <div class='main-content-container'>
-    <div class='product-img-container'>
+    <div class='product-img-container' >
         <img
         class="product-img"
         src="{{ product.featured_image | img_url: '600x600' }}"
         alt="product-img"
         />
     </div>
-    <div class='product-text-container'>
+    <div class='product-text-container' >
         <h2 class='product-template-title'>{{product.title}}</h2>
         <section class="container">
 
@@ -95,6 +97,20 @@
     </div>
 
 </div>
+
+
+{% if product.tags contains 'greens' %}
+<script>
+    console.log('sdasd')
+const textContainer = document.querySelector(".product-text-container");
+console.log(textContainer)
+const imgContainer = document.querySelector(".product-img-container");
+
+textContainer.style.backgroundColor = "#5cbd0d";
+imgContainer.style.backgroundColor = "#83bd54";
+</script>
+{% endif %}
+
 
 {% stylesheet %}
     .main-content-container{
@@ -192,6 +208,13 @@
     }
     .container div:not(:first-of-type) {
         display: none
+    }
+    .recomended-title{
+        font-size: 50px;
+        width: 40rem;
+        margin-top: 5rem;
+        margin-left: 10rem;
+        margin-bottom: 7rem;
     }
 
 {% endstylesheet %}
