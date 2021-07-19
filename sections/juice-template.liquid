@@ -8,7 +8,38 @@
     </div>
     <div class='product-text-container'>
         <h2 class='product-template-title'>{{product.title}}</h2>
-        <p class='product-template-desc'>{{product.description}}</p>
+        <section class="container">
+
+            <nav class='tab-nav'>
+                <ul class='tab-ul'>
+                    <li id="tab1" class="inactive tab-li">Product Details</li>
+                    <li id="tab2" class='tab-li'>Benefits</li>
+                    <li id="tab3" class='tab-li'>Ingredients</li>
+                </ul>
+            </nav>
+
+            <section class="tabs">
+                <div id="tab1-content" class='tab-text' >
+                    <p >
+                     {{product.description}}
+                    </p>
+                </div>
+
+                <div id="tab2-content" class='tab-text' >
+                    <p >
+                    Vitamin C Goals - With 610% of your daily Vitamin C per bottle, this smoothie is chock full of antioxidants.
+                    No Added Sugars - No added sugars, just natural sweetness in this fruit-forward smoothie.
+                    </p>
+                </div>
+
+                <div id="tab3-content" class='tab-text' >
+                    <p >
+                     Apple Juice, Orange Juice, Strawberries, Mangoes, Peaches, Lemon Juice, Elderberry Powder, Vitamin C (Ascorbic Acid)
+                    </p>
+                </div>
+
+            </section>
+        </section>
         <h4>{{product.options}}</h4>
        <div class="variant-container">
             {% for variant in product.variants %}
@@ -137,16 +168,57 @@
     color: white;
     }
 
+    .tab-ul {
+        display: flex;
+    }
+
+    .tab-li {
+        text-decoration: none;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        font-weight:bold;
+
+    }
+
+
+    .tab-li.inactive {
+    border-bottom: 1px solid;
+    }
+
+    .tab-text{
+        margin-bottom: 1rem;
+    }
+    .container div:not(:first-of-type) {
+        display: none
+    }
+
 {% endstylesheet %}
 <script>
 
-
-    $('input[type=radio][name=variant]').change(function() {
+$('input[type=radio][name=variant]').change(function() {
     const selectedID = $("input[name='variant']:checked").val();
-
     document.getElementById("cart-variant").value = `${selectedID}`;
 });
 
+$(function () {
+    "use strict";
+    $("nav ul li").on("click", function () {
 
+        // Get The ID Of a When I Clicked
+        var myID = $(this).attr("id");
+
+        // Remove Class Inactive When I clicked And Add It In Siblings In Ul
+        $(this).addClass("inactive").siblings().removeClass("inactive");
+
+        // Hide The Div When i Clicked
+        $(".container div").hide();
+
+        // When Clicked In Li Get Div Same ID
+
+        $("#" + myID + "-content").fadeIn(1000);
+    });
+});
 
 </script>
