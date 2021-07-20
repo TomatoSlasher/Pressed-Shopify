@@ -1,13 +1,13 @@
 <div class="hero">
   <div class="hero-title-container">
     <div class="hero-text-container">
-      <h1>Pressed</h1>
+      <p class='hero-title'>Pressed.</p>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, id. Illum
         deleniti sed cum quam ad, maxime eaque inventore
       </p>
       <div class="hero-a-container">
-        <a href="/collections/all">Buy Now</a>
+        <a href="/collections/all">Shop Juices</a>
       </div>
     </div>
   </div>
@@ -23,8 +23,6 @@
 </div>
 
 
-
-
 {% schema %}
 {
     "presets": [
@@ -37,3 +35,75 @@
 }
 {% endschema %}
 
+
+{% stylesheet %}
+.hero {
+  position: relative;
+}
+
+.hero-title-container {
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15rem;
+}
+.hero-title {
+  font-size: 120px !important;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  line-height: 8rem;
+}
+.hero-text-container p {
+  text-align: center;
+
+  width: 35rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+.hero-a-container {
+  text-align: center;
+}
+.hero-a-container a {
+  color: white;
+}
+.hero-text-container a {
+  background-color: #f58153;
+
+  padding: 1rem 2rem;
+
+  color: white !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.hero-img {
+  width: 35rem;
+  position: absolute;
+  top: 0;
+
+  z-index: -10;
+}
+.hero-blue-komb {
+  transform: rotate(-10deg);
+  top: -2rem;
+}
+.hero-red-komb {
+  right: -5rem;
+  transform: rotate(10deg);
+  top: -2rem;
+}
+.hero-yellow-komb {
+  right: -10rem;
+  top: 10rem;
+  transform: rotate(30deg);
+}
+.hero-orange-komb {
+  left: -10rem;
+  top: 10rem;
+  transform: rotate(-30deg);
+}
+
+{% endstylesheet %}
