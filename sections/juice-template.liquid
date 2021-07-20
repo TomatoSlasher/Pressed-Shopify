@@ -47,7 +47,7 @@
             {% for variant in product.variants %}
                     <div class="selection">
                     <input id="{{variant.title}}"  name="variant" type="radio" value="{{ variant.id }}">
-                    <label for="{{variant.title}}">{{variant.title}}</label>
+                    <label class='variant-item' for="{{variant.title}}">{{variant.title}}</label>
                 </div>
             {% endfor %}
         </div>
@@ -101,13 +101,25 @@
 
 {% if product.tags contains 'greens' %}
 <script>
-    console.log('sdasd')
-const textContainer = document.querySelector(".product-text-container");
-console.log(textContainer)
-const imgContainer = document.querySelector(".product-img-container");
 
-textContainer.style.backgroundColor = "#5cbd0d";
+const textContainer = document.querySelector(".product-text-container");
+const imgContainer = document.querySelector(".product-img-container");
+const variantItem = document.querySelectorAll(".variant-item");
+
 imgContainer.style.backgroundColor = "#83bd54";
+textContainer.style.backgroundColor = "#74D029";
+
+$( ".variant-item" ).each(function(index) {
+   $( this ).hover(
+  function() {
+   this.style.backgroundColor = "#83bd54";
+  }, function() {
+    this.style.backgroundColor = "#74D029";
+  }
+);
+});
+
+
 </script>
 {% endif %}
 
