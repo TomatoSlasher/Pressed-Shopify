@@ -22,6 +22,7 @@
   {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
 
   <link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style">
+
   <link rel="preload" as="font" href="{{ header_font | font_url }}" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="{{ base_font_bold | font_url }}" type="font/woff2" crossorigin>
@@ -203,7 +204,7 @@
     {% include 'cart-popup' %}
   {%- endif -%}
 
-  {% section 'header' %}
+  {% section 'juice-header' %}
 
   <div class="page-container drawer-page-content" id="PageContainer">
 
