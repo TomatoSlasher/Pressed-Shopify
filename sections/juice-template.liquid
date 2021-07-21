@@ -225,7 +225,7 @@ const productImg = document.querySelector(".product-img");
 
     ingredientsImg.src="{{ "greens1nobg.png" | asset_url }}"
     productImg.style.position = "absolute"
-    productImg.style.top = "-8rem"
+    productImg.style.top = "-3rem"
 
 </script>
 {% endif %}
@@ -239,7 +239,7 @@ const productImg = document.querySelector(".product-img");
 
     ingredientsImg.src="{{ "orangenobg.png" | asset_url }}"
     productImg.style.position = "absolute"
-    productImg.style.top = "-9rem"
+    productImg.style.top = "-4rem"
 
 </script>
 {% endif %}
@@ -253,12 +253,15 @@ const productImg = document.querySelector(".product-img");
     }
     .product-img-container{
       background-color: #fca887;
-      width: 60%;
+      width: 60vw;
+      padding-top: 5rem;
+
     }
     .product-text-container{
         background-color: #f58153;
         width: 40vw;
-        padding: 3rem 4rem;
+        padding-top: 5rem;
+        padding: 7rem 4rem;
     }
 
     .product-img{
@@ -274,7 +277,7 @@ const productImg = document.querySelector(".product-img");
     }
     .template-cart{
         background-color: #011C28;
-        width: 16rem;
+        width: 15rem;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
 
@@ -356,6 +359,9 @@ const productImg = document.querySelector(".product-img");
 <script>
 const variantsItem = document.querySelectorAll(".variant-item");
 const freshVariant = document.getElementById("Fresh");
+const headerWrapper = document.querySelector(".header-wrapper");
+headerWrapper.style.paddingBottom = '0'
+
 freshVariant.checked = true;
 
 const snow = '<i class="far fa-snowflake variant-icon"></i>'
