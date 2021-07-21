@@ -1,4 +1,3 @@
-
 <div class='main-content-container'>
     <div class='product-img-container' >
         <img
@@ -7,6 +6,7 @@
         alt="product-img"
         />
     </div>
+
     <div class='product-text-container' >
         <p class='product-template-title' style='font-size: 38px; font-weight: bold;'>{{product.title}}</p>
         <section class="container">
@@ -348,9 +348,21 @@ const productImg = document.querySelector(".product-img");
         margin-left: 10rem;
         margin-bottom: 7rem;
     }
+    .variant-icon{
+        margin-right: 0.5rem;
+    }
 
 {% endstylesheet %}
 <script>
+const variantsItem = document.querySelectorAll(".variant-item");
+const freshVariant = document.getElementById("Fresh");
+freshVariant.checked = true;
+
+const snow = '<i class="far fa-snowflake variant-icon"></i>'
+const leaf = '<i class="fas fa-leaf variant-icon"></i>'
+variantsItem[0].insertAdjacentHTML('afterbegin', leaf);
+variantsItem[1].insertAdjacentHTML('afterbegin', snow);
+
 
 $('input[type=radio][name=variant]').change(function() {
     const selectedID = $("input[name='variant']:checked").val();
@@ -377,3 +389,4 @@ $(function () {
 });
 
 </script>
+

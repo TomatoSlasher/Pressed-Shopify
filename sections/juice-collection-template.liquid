@@ -1,0 +1,75 @@
+<div class='collection-container'>
+{% for product in collections.all.products %}
+
+  <div class="featured-item collection-item">
+        <img
+        class="featured-img"
+        src="{{ product.featured_image | img_url: '600x600' }}"
+        alt=""
+        />
+        <div class="featured-text">
+        <div class="featured-title-price">
+            <h2>{{ product.title }}</h2>
+            <h4>{{ product.price | money }}</h4>
+        </div>
+        <form class="featured-cart-form" method="post" action="/cart/add">
+            <input
+            type="hidden"
+            name="id"
+            value="{{ product.variants.first.id }}"
+            />
+            <div class="cart-counter-wrapper">
+            <button
+                class="cart-btn"
+                type="button"
+                onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+            >
+                -
+            </button>
+            <input
+                class="cart-counter"
+                min="1"
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+            />
+            <button
+                class="cart-btn"
+                type="button"
+                onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+            >
+                +
+            </button>
+            </div>
+            <input
+            class="add-to-cart"
+            type="submit"
+            value="Add to cart"
+            class="btn"
+
+            />
+        </form>
+
+        <div class="featured-more-info">
+            <a href="{{ product.url }}">More info</a>
+        </div>
+    </div>
+  </div>
+
+ {% endfor %}
+</div>
+{% stylesheet %}
+    .collection-container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-items: center;
+        align-self: center;
+        justify-self: center;
+
+    }
+    .collection-item{
+        margin-top: 7rem;
+    }
+{% endstylesheet %}
