@@ -1,0 +1,51 @@
+<div class='collection-hero-container'>
+
+    <img class="collection-hero-img collection-hero-greens" src="
+  {{ "greens1nobg.png" | asset_url }}" alt="">
+  <img class="collection-hero-img collection-hero-orange" src="
+  {{ "orangenobg.png" | asset_url }}" alt="">
+  <div class= 'collection-hero-text-container'>
+    <p class='collection-hero-side-title'>Cold-Pressed Juice</p>
+    <h1 class ='collection-hero-title'>Deliciously Plant-Forward</h1>
+    <p class ='collection-hero-text'>
+Our entirely plant-based menu is designed to make plant-forward living as accessible and delicious as possible,Whether you crave a monthly reset or daily wellness support, our half-day fasts, full-day cleanses and everyday routines deliver high-powered nutrition to fuel your best, most vibrant life.</p>
+</div>
+
+</div>
+{% stylesheet %}
+    .collection-hero-container{
+        margin-bottom: 3rem;
+    }
+    .collection-hero-text-container{
+        margin-left: 15rem;
+        margin-top: 17rem;
+    }
+    .collection-hero-img{
+        position: absolute;
+        width: 40rem;
+    }
+    .collection-hero-side-title{
+        font-size: 25px;
+        line-height: 1rem;
+
+    }
+    .collection-hero-title{
+        font-size: 40px;
+        line-height: 2rem;
+    }
+    .collection-hero-text{
+        width: 40rem;
+    }
+    .collection-hero-orange{
+        right: -12rem;
+        transform: rotate(-120deg);
+        top: -2rem;
+
+    }
+    .collection-hero-greens{
+        left: -14rem;
+        transform: rotate(40deg);
+        top: -4rem;
+
+    }
+{% endstylesheet %}
