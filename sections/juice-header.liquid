@@ -1,28 +1,63 @@
+<div class='header-tab-wrapper'>
+  <div class='header-tab-container'>
 
-<div class='header-wrapper'>
+    <div class='header-wrapper'>
 
-<header class='header-container'>
+    <header class='header-container'>
 
-<nav class='nav-container header-section'>
-{% for link in linklists.main-menu.links %}
-  <a href="{{ link.url }}" class='nav-li'>{{ link.title }}</a>
-{% endfor %}
-</nav>
+    <nav class='nav-container header-section'>
+    {% for link in linklists.main-menu.links %}
+      <a href="{{ link.url }}" class='nav-li {{ link.title }}-nav'>{{ link.title }}</a>
+    {% endfor %}
+    </nav>
+    <a href='/'><img class='header-logo header-section'  src=" {{ "pressed-logo.svg" | asset_url }}" ></a>
 
-<a href='/'><img class='header-logo header-section'  src=" {{ "pressed-logo.svg" | asset_url }}" ></a>
-
-<a href="{{ routes.cart_url }}" class="site-header__icon site-header__cart header-section header-cart">
-            {% include 'icon-cart' %}
-            <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
-            <div id="CartCount" class="site-header__cart-count{% if cart.item_count == 0 %} hide{% endif %} critical-hidden" data-cart-count-bubble>
-              <span data-cart-count>{{ cart.item_count }}</span>
-              <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+    <a href="{{ routes.cart_url }}" class="site-header__icon site-header__cart header-section header-cart">
+                {% include 'icon-cart' %}
+                <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+                <div id="CartCount" class="site-header__cart-count{% if cart.item_count == 0 %} hide{% endif %} critical-hidden" data-cart-count-bubble>
+                  <span data-cart-count>{{ cart.item_count }}</span>
+                  <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+                </div>
+    </a>
+    </header>
+    </div>
+    <div class='shop-tab'>
+      <div class ='shop-tab-container'>
+          {% for collection in collections %}
+          <a href='{{collection.url}}'>
+            <div class ='shop-tab-collection'>
+              <img src="{{ collection.featured_image | img_url: '250x' }}">
+              <h2>{{collection.title}}</h2>
+              <p class='shop-tab-description'> {{collection.description}} </p>
             </div>
-</a>
-</header>
+          </a>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
-
 <script>
+
+const navLi = document.querySelectorAll(".nav-li");
+const shopNav = document.querySelector(".Shop-nav");
+
+const leaf = '<i class="fas fa-chevron-down"></i>'
+navLi[1].insertAdjacentHTML('beforeend', leaf);
+
+$(shopNav).hover( function() {
+    $(".shop-tab").addClass("display-block");
+    $(".header-container").addClass("background-white");
+  }
+);
+$('.header-tab-container').mouseleave( function() {
+   $(".header-container").removeClass("background-white");
+    $(".shop-tab").removeClass("display-block")
+  }
+);
+
+
+
 $(function() {
     $(window).on("scroll", function() {
         if($(window).scrollTop() > 50) {

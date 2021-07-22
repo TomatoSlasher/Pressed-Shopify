@@ -9116,15 +9116,20 @@ hr {
 .store-availability-list__phone {
   margin-bottom: 0;
 }
-.header-wrapper {
+.header-tab-wrapper {
   padding-bottom: 5rem;
 }
-.header-container {
-  display: flex;
-  justify-content: space-between;
+.header-tab-container {
   position: fixed;
   width: 100%;
   z-index: 5;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
 }
 .active-header {
   transition: all 0.4s ease-in-out;
@@ -9152,4 +9157,41 @@ hr {
 .header-cart {
   margin: 1rem;
   margin-right: 2rem;
+}
+
+.fa-chevron-down {
+  margin-left: 0.5rem;
+}
+.shop-tab {
+  height: 60vh;
+  background-color: white;
+  display: none;
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #011c28;
+}
+.display-block {
+  display: block;
+}
+.background-white {
+  background-color: white !important;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+}
+.shop-tab-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shop-tab-collection {
+  border: 1px solid #011c28;
+  border-radius: 5px;
+  margin: 1rem 3rem;
+  width: 20rem;
+
+  /* word-wrap: break-word; */
+}
+.shop-tab-description {
 }
