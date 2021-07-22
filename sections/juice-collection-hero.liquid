@@ -1,17 +1,49 @@
 <div class='collection-hero-container'>
 
     <img class="collection-hero-img collection-hero-greens" src="
-  {{ "greens1nobg.png" | asset_url }}" alt="">
-  <img class="collection-hero-img collection-hero-orange" src="
-  {{ "orangenobg.png" | asset_url }}" alt="">
-  <div class= 'collection-hero-text-container'>
-    <p class='collection-hero-side-title'>Cold-Pressed Juice</p>
-    <h1 class ='collection-hero-title'>Deliciously Plant-Forward</h1>
-    <p class ='collection-hero-text'>
-Our entirely plant-based menu is designed to make plant-forward living as accessible and delicious as possible,Whether you crave a monthly reset or daily wellness support, our half-day fasts, full-day cleanses and everyday routines deliver high-powered nutrition to fuel your best, most vibrant life.</p>
-</div>
+    {{ "greens1nobg.png" | asset_url }}" alt="">
+    <img class="collection-hero-img collection-hero-orange" src="
+    {{ "orangenobg.png" | asset_url }}" alt="">
+    <div class= 'collection-hero-text-container'>
+
+
+        <p class='collection-hero-side-title'>Deliciously Plant-Forward</p>
+        <h1 class ='collection-hero-title'>Cold Pressed Juices</h1>
+        <p class ='collection-hero-text'>
+    Our entirely plant-based menu is designed to make plant-forward living as accessible and delicious as possible,Whether you crave a monthly reset or daily wellness support, our half-day fasts, full-day cleanses and everyday routines deliver high-powered nutrition to fuel your best, most vibrant life.</p>
+    </div>
 
 </div>
+
+{% if collection.handle contains 'sets' %}
+    <script>
+
+const ingredientsImg = document.querySelector(".collection-hero-orange");
+const collectionHeroTitle = document.querySelector(".collection-hero-title");
+const collectionHeroText = document.querySelector(".collection-hero-text");
+
+
+        ingredientsImg.src="{{ "shotnobg.png" | asset_url }}"
+        ingredientsImg.style.right= '-6rem'
+        ingredientsImg.style.top = '2rem'
+        ingredientsImg.style.width = '50rem'
+
+        collectionHeroTitle.innerText = 'Starter Sets'
+        collectionHeroText.innerText = 'New to Pressed? Sample the best of what Pressed has to offer,Fire up your system on the daily with a concentrated dose of wellness.'
+</script>
+
+{% endif %}
+
+{% if collection.handle contains 'juices' %}
+    <script>
+    const collectionHeroTitle = document.querySelector(".collection-hero-title");
+
+
+    collectionHeroTitle.innerText = 'Cold Pressed Juices Bottles'
+
+</script>
+
+{% endif %}
 {% stylesheet %}
         @keyframes move {
         0% {
@@ -66,7 +98,7 @@ Our entirely plant-based menu is designed to make plant-forward living as access
     }
     .collection-hero-orange{
         right: -12rem;
-        animation: move 4s ease-in-out infinite;
+        animation: move 5s ease-in-out infinite;
         top: -2rem;
 
     }

@@ -1,5 +1,7 @@
+
 <div class='collection-container'>
-{% for product in collections.all.products %}
+
+{% for product in collection.products %}
 
   <div class="featured-item collection-item">
         <img
@@ -59,6 +61,8 @@
 
  {% endfor %}
 </div>
+
+
 {% stylesheet %}
     .collection-container{
         display: grid;
