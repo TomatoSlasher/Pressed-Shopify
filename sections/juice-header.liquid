@@ -23,16 +23,25 @@
     </header>
     </div>
     <div class='shop-tab'>
+
+         <i class="fas fa-times"></i>
+
       <div class ='shop-tab-container'>
           {% for collection in collections %}
           <a href='{{collection.url}}'>
             <div class ='shop-tab-collection'>
-              <img src="{{ collection.featured_image | img_url: '250x' }}">
-              <h2>{{collection.title}}</h2>
-              <p class='shop-tab-description'> {{collection.description}} </p>
+
+              <div class='shop-tab-img-container'>
+                <img class='shop-tab-img shop-tab-{{collection.title}}-img' src="{{ collection.featured_image | img_url: '300x' }}">
+              </div>
+              <h2 class='shop-tab-title'>{{collection.title}}</h2>
+              <p class='shop-tab-description'>{{collection.description}} </p>
             </div>
           </a>
           {% endfor %}
+      </div>
+      <div class='shop-tab-all-container'>
+          <a href='/collections/all' class='shop-tab-all'>Shop All</a>
       </div>
     </div>
   </div>
@@ -41,9 +50,16 @@
 
 const navLi = document.querySelectorAll(".nav-li");
 const shopNav = document.querySelector(".Shop-nav");
+const faTimes  = document.querySelectorAll(".fa-times ");
+const arrow = '<i class="fas fa-chevron-down"></i>'
 
-const leaf = '<i class="fas fa-chevron-down"></i>'
-navLi[1].insertAdjacentHTML('beforeend', leaf);
+$(faTimes).click( function() {
+$(".header-container").removeClass("background-white");
+    $(".shop-tab").removeClass("display-block")
+
+})
+
+  navLi[1].insertAdjacentHTML('beforeend', arrow);
 
 $(shopNav).hover( function() {
     $(".shop-tab").addClass("display-block");

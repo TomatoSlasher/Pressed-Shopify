@@ -9118,11 +9118,13 @@ hr {
 }
 .header-tab-wrapper {
   padding-bottom: 5rem;
-}
-.header-tab-container {
   position: fixed;
   width: 100%;
   z-index: 5;
+}
+.header-tab-container {
+  position: absolute;
+  width: 100%;
 }
 
 .header-container {
@@ -9163,8 +9165,8 @@ hr {
   margin-left: 0.5rem;
 }
 .shop-tab {
-  height: 60vh;
-  background-color: white;
+  height: 70vh;
+  background-color: #f58153;
   display: none;
   position: absolute;
   width: 100%;
@@ -9174,7 +9176,7 @@ hr {
   display: block;
 }
 .background-white {
-  background-color: white !important;
+  background-color: #f58153 !important;
 }
 
 ::-webkit-scrollbar {
@@ -9189,9 +9191,51 @@ hr {
   border: 1px solid #011c28;
   border-radius: 5px;
   margin: 1rem 3rem;
-  width: 20rem;
+  width: 25rem;
+  color: white;
+  background-color: #011c28;
+}
+.shop-tab-collection:hover {
+  background-color: #092e3d;
+}
+.shop-tab-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* word-wrap: break-word; */
+.shop-tab-Bottles-img {
+  height: 203px;
+}
+.shop-tab-title {
+  text-align: center;
+  color: white;
 }
 .shop-tab-description {
+  margin: 0.5rem !important;
+  color: white;
+  text-align: center;
+}
+.shop-tab-all-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shop-tab-all {
+  background-color: #011c28;
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.shop-tab-close-container {
+}
+.fa-times {
+  position: absolute;
+  cursor: pointer;
+  right: 0rem;
+  padding: 0.5rem 1rem;
+  font-size: 35px;
 }

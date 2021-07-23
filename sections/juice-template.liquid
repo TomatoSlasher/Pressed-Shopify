@@ -1,102 +1,103 @@
-<div class='main-content-container'>
-    <div class='product-img-container' >
-        <img
-        class="product-img"
-        src="{{ product.featured_image | img_url: '600x600' }}"
-        alt="product-img"
-        />
-    </div>
+<div class='main-content-wrapper'>
+    <div class='main-content-container'>
+        <div class='product-img-container' >
+            <img
+            class="product-img"
+            src="{{ product.featured_image | img_url: '600x600' }}"
+            alt="product-img"
+            />
+        </div>
 
-    <div class='product-text-container' >
-        <p class='product-template-title' style='font-size: 38px; font-weight: bold;'>{{product.title}}</p>
-        <section class="container">
+        <div class='product-text-container' >
+            <p class='product-template-title' style='font-size: 38px; font-weight: bold;'>{{product.title}}</p>
+            <section class="container">
 
-            <nav class='tab-nav'>
-                <ul class='tab-ul'>
-                    <li id="tab1" class="inactive tab-li">Product Details</li>
-                    <li id="tab2" class='tab-li'>Benefits</li>
-                    <li id="tab3" class='tab-li'>Ingredients</li>
-                </ul>
-            </nav>
+                <nav class='tab-nav'>
+                    <ul class='tab-ul'>
+                        <li id="tab1" class="inactive tab-li">Product Details</li>
+                        <li id="tab2" class='tab-li'>Benefits</li>
+                        <li id="tab3" class='tab-li'>Ingredients</li>
+                    </ul>
+                </nav>
 
-            <section class="tabs">
-                <div id="tab1-content" class='tab-text' >
-                    <p >
-                     {{product.description}}
-                    </p>
-                </div>
+                <section class="tabs">
+                    <div id="tab1-content" class='tab-text' >
+                        <p >
+                        {{product.description}}
+                        </p>
+                    </div>
 
-                <div id="tab2-content" class='tab-text' >
-                    <p >
-                    Vitamin C Goals - With 610% of your daily Vitamin C per bottle, this smoothie is chock full of antioxidants.
-                    No Added Sugars - No added sugars, just natural sweetness in this fruit-forward smoothie.
-                    </p>
-                </div>
+                    <div id="tab2-content" class='tab-text' >
+                        <p >
+                        Vitamin C Goals - With 610% of your daily Vitamin C per bottle, this smoothie is chock full of antioxidants.
+                        No Added Sugars - No added sugars, just natural sweetness in this fruit-forward smoothie.
+                        </p>
+                    </div>
 
-                <div id="tab3-content" class='tab-text' >
-                    <p >
-                     Apple Juice, Orange Juice, Strawberries, Mangoes, Peaches, Lemon Juice, Elderberry Powder, Vitamin C (Ascorbic Acid)
-                    </p>
-                </div>
+                    <div id="tab3-content" class='tab-text' >
+                        <p >
+                        Apple Juice, Orange Juice, Strawberries, Mangoes, Peaches, Lemon Juice, Elderberry Powder, Vitamin C (Ascorbic Acid)
+                        </p>
+                    </div>
 
+                </section>
             </section>
-        </section>
-        <p  style='font-size: 20px; font-weight: bold; margin-bottom: .5rem !important;' >{{product.options}}</p>
-       <div class="variant-container">
-            {% for variant in product.variants %}
-                    <div class="selection">
-                    <input id="{{variant.title}}"  name="variant" type="radio" value="{{ variant.id }}">
-                    <label class='variant-item' for="{{variant.title}}">{{variant.title}}</label>
-                </div>
-            {% endfor %}
+            <p  style='font-size: 20px; font-weight: bold; margin-bottom: .5rem !important;' >{{product.options}}</p>
+        <div class="variant-container">
+                {% for variant in product.variants %}
+                        <div class="selection">
+                        <input id="{{variant.title}}"  name="variant" type="radio" value="{{ variant.id }}">
+                        <label class='variant-item' for="{{variant.title}}">{{variant.title}}</label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <p class='product-template-price' style='font-size: 20px; font-weight: bold;'>{{product.price | money}}</p>
+
+            <div class='cart-form'>
+                <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
+                    <input
+                    type="hidden"
+                    name="id"
+                    id='cart-variant'
+                    value="{{  product.variants.first.id  }}"
+                    />
+                    <div class="cart-counter-wrapper">
+                    <button
+                        class="cart-btn"
+                        type="button"
+                        onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+                    >
+                        -
+                    </button>
+                    <input
+                        class="cart-counter"
+                        min="1"
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        value="1"
+                    />
+                    <button
+                        class="cart-btn"
+                        type="button"
+                        onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+                    >
+                        +
+                    </button>
+                    </div>
+                    <input
+                    class="add-to-cart template-cart"
+                    type="submit"
+                    value="Add to cart"
+                    class="btn"
+                    />
+                </form>
+            </div>
         </div>
 
-        <p class='product-template-price' style='font-size: 20px; font-weight: bold;'>{{product.price | money}}</p>
-
-        <div class='cart-form'>
-            <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
-                <input
-                type="hidden"
-                name="id"
-                id='cart-variant'
-                value="{{  product.variants.first.id  }}"
-                />
-                <div class="cart-counter-wrapper">
-                <button
-                    class="cart-btn"
-                    type="button"
-                    onclick="this.parentNode.querySelector('[type=number]').stepDown();"
-                >
-                    -
-                </button>
-                <input
-                    class="cart-counter"
-                    min="1"
-                    type="number"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                />
-                <button
-                    class="cart-btn"
-                    type="button"
-                    onclick="this.parentNode.querySelector('[type=number]').stepUp();"
-                >
-                    +
-                </button>
-                </div>
-                <input
-                class="add-to-cart template-cart"
-                type="submit"
-                value="Add to cart"
-                class="btn"
-                />
-            </form>
-        </div>
     </div>
-
 </div>
-
 <div class="ingredients-wrapper" >
   <svg
     class="wave-1"
@@ -245,6 +246,9 @@ const productImg = document.querySelector(".product-img");
 {% endif %}
 
 {% stylesheet %}
+    .main-content-wrapper{
+        position: relative;
+    }
     .main-content-container{
         display: flex;
         justify-content: space-between;
@@ -356,6 +360,7 @@ const productImg = document.querySelector(".product-img");
     }
 
 {% endstylesheet %}
+
 <script>
 const variantsItem = document.querySelectorAll(".variant-item");
 const freshVariant = document.getElementById("Fresh");
@@ -363,7 +368,7 @@ const headerWrapper = document.querySelector(".header-wrapper");
 headerWrapper.style.paddingBottom = '0'
 
 freshVariant.checked = true;
-
+console.log(variantsItem[0])
 const snow = '<i class="far fa-snowflake variant-icon"></i>'
 const leaf = '<i class="fas fa-leaf variant-icon"></i>'
 variantsItem[0].insertAdjacentHTML('afterbegin', leaf);
