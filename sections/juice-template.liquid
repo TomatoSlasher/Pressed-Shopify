@@ -400,8 +400,12 @@ $(function () {
         $("#" + myID + "-content").fadeIn(1000);
     });
 });
+
+const quickCart = document.querySelector(".quick-cart");
+const quickCartContainer = document.querySelector(".quick-cart-container");
+
 $('.quick-cart-clear').click( function (){
-    console.log('1')
+quickCart.innerHTML = ''
 $.post("/cart/clear.js")
 
 })
@@ -421,35 +425,75 @@ $.post("/cart/add.js", {
 
 updateQuickCart()
 })
-const quickCart = document.querySelector(".quick-cart");
-const quickCartContainer = document.querySelector(".quick-cart-container");
+
 
 $('.product-template-title').click( function () {
 
     $( ".quick-cart-container" ).toggleClass( "display-block" )
 });
+$('.cart-times').click( function () {
+
+    $( ".quick-cart-container" ).removeClass( "display-block" )
+});
 const updateQuickCart = () => {
 
-    $.get("/cart.js", function (data) {
+    setTimeout(function(){
+
+         $.get("/cart.js", function (data) {
         const cartData = JSON.parse(data);
         console.log(cartData);
+        quickCart.innerHTML = ''
 
         const cartItems = cartData.items
         const cartDataMarkup = cartItems.map((data) => `
-            <div class='quick-cart-item-container'>
-                <a href ="${data.url}">
-                    <img src='${data.image}'>
-                    <p class='quick-cart-item-text'>${data.product_title}</p>
-                    <p class='quick-cart-item-text'>${data.quantity}</p>
-                    <p class='quick-cart-item-text'>${data.variant_title}</p>
-                    <p class='quick-cart-item-text'>${data.final_price / 100}</p>
-                </a>
-            </div>
+                <div class='quick-cart-item-container'>
+                        <div class='quick-cart-img-container'>
+                        <img class='quick-cart-img ${data.handle}' src='${data.image}'>
+                        </div>
+                        <div class='quick-cart-text-container'>
+                            <div class='quick-cart-title-container'>
+                                <a href ="${data.url}">
+                                    <p  class='quick-cart-title quick-cart-item-text'>${data.product_title}</p>
+                                </a>
+                                <p class='quick-cart-variant quick-cart-item-text'>${data.variant_title == 'Fresh' ? leaf : snow}${data.variant_title}</p>
+                            </div>
+                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn">
+                                <button
+                                    class="cart-btn  quick-cart-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+                                >
+                                    -
+                                </button>
+
+                                <input
+                                    class="cart-counter quick-cart-btn"
+                                    min="1"
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    value="${data.quantity}"
+                                />
+
+                                <button
+                                    class="cart-btn quick-cart-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+                                >
+                                    +
+                                </button>
+                            </div>
+                            <p class='quick-cart-price quick-cart-item-text'>${data.final_line_price / 100}${cartData.currency}</p>
+                        </div>
+                </div>
+
             `
         ).join("")
-        console.log(cartDataMarkup)
         quickCart.insertAdjacentHTML('afterbegin', cartDataMarkup)
     });
+
+    }, 300);
+
 
 }
 updateQuickCart()
