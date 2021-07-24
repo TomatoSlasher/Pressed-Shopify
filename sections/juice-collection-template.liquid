@@ -15,6 +15,7 @@
             <h4>{{ product.price | money }}</h4>
         </div>
         <form class="featured-cart-form" method="post" action="/cart/add">
+            <input type="hidden" name="return_to" value="back" />
             <input
             type="hidden"
             name="id"
@@ -76,4 +77,5 @@
     .collection-item{
         margin-top: 7rem;
     }
+
 {% endstylesheet %}

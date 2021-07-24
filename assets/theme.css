@@ -9172,9 +9172,7 @@ hr {
   width: 100%;
   border-top: 1px solid #011c28;
 }
-.display-block {
-  display: block;
-}
+
 .background-white {
   background-color: #f58153 !important;
 }
@@ -9230,7 +9228,8 @@ hr {
   font-weight: bold;
   border-radius: 5px;
 }
-.shop-tab-close-container {
+.shop-tab-all:hover {
+  background-color: #092e3d;
 }
 .fa-times {
   position: absolute;
@@ -9238,4 +9237,22 @@ hr {
   right: 0rem;
   padding: 0.5rem 1rem;
   font-size: 35px;
+}
+
+.quick-cart-container {
+  display: none;
+  position: fixed;
+  background-color: #011c28;
+  right: 0rem;
+  width: 20rem;
+  height: 100%;
+  z-index: 20;
+  color: white;
+}
+.quick-cart-item-text {
+  color: white !important;
+}
+.display-block {
+  display: block;
+  overflow: scroll;
 }

@@ -1,3 +1,4 @@
+
 <div class='main-content-wrapper'>
     <div class='main-content-container'>
         <div class='product-img-container' >
@@ -56,6 +57,7 @@
 
             <div class='cart-form'>
                 <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
+                    <input type="hidden" name="return_to" value="back" />
                     <input
                     type="hidden"
                     name="id"
@@ -368,7 +370,7 @@ const headerWrapper = document.querySelector(".header-wrapper");
 headerWrapper.style.paddingBottom = '0'
 
 freshVariant.checked = true;
-console.log(variantsItem[0])
+
 const snow = '<i class="far fa-snowflake variant-icon"></i>'
 const leaf = '<i class="fas fa-leaf variant-icon"></i>'
 variantsItem[0].insertAdjacentHTML('afterbegin', leaf);
@@ -398,6 +400,59 @@ $(function () {
         $("#" + myID + "-content").fadeIn(1000);
     });
 });
+$('.quick-cart-clear').click( function (){
+    console.log('1')
+$.post("/cart/clear.js")
+
+})
+$('.product-img').click( function (){
+
+const selected = $("input[name='variant']:checked").val();
+const quantity = $("input[name='quantity']").val();
+
+$.post("/cart/add.js", {
+  items: [
+    {
+      quantity: quantity,
+      id: selected,
+    },
+  ],
+});
+
+updateQuickCart()
+})
+const quickCart = document.querySelector(".quick-cart");
+const quickCartContainer = document.querySelector(".quick-cart-container");
+
+$('.product-template-title').click( function () {
+
+    $( ".quick-cart-container" ).toggleClass( "display-block" )
+});
+const updateQuickCart = () => {
+
+    $.get("/cart.js", function (data) {
+        const cartData = JSON.parse(data);
+        console.log(cartData);
+
+        const cartItems = cartData.items
+        const cartDataMarkup = cartItems.map((data) => `
+            <div class='quick-cart-item-container'>
+                <a href ="${data.url}">
+                    <img src='${data.image}'>
+                    <p class='quick-cart-item-text'>${data.product_title}</p>
+                    <p class='quick-cart-item-text'>${data.quantity}</p>
+                    <p class='quick-cart-item-text'>${data.variant_title}</p>
+                    <p class='quick-cart-item-text'>${data.final_price / 100}</p>
+                </a>
+            </div>
+            `
+        ).join("")
+        console.log(cartDataMarkup)
+        quickCart.insertAdjacentHTML('afterbegin', cartDataMarkup)
+    });
+
+}
+updateQuickCart()
 
 </script>
 
