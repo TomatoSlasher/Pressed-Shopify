@@ -9728,11 +9728,12 @@ const updateQuickCart = () => {
       const cartData = JSON.parse(data);
       console.log(cartData);
       quickCart.innerHTML = "";
-
+      console.log(cartData.items_count);
+      $(".header-cart-counter").text(`${cartData.item_count}`);
       const cartItems = cartData.items;
       const cartDataMarkup = cartItems
         .map(
-          (data) => `
+          (data, i) => `
                 <div class='quick-cart-item-container'>
                         <div class='quick-cart-img-container'>
                         <img class='quick-cart-img ${data.handle}' src='${
@@ -9740,6 +9741,7 @@ const updateQuickCart = () => {
           }'>
                         </div>
                         <div class='quick-cart-text-container'>
+
                             <div class='quick-cart-title-container'>
                                 <a href ="${data.url}">
                                     <p  class='quick-cart-title quick-cart-item-text'>${
@@ -9749,6 +9751,9 @@ const updateQuickCart = () => {
                                 <p class='quick-cart-variant quick-cart-item-text'>${
                                   data.variant_title == "Fresh" ? leaf1 : snow1
                                 }${data.variant_title}</p>
+                                <p class='quick-cart-remove' value="${
+                                  i + 1
+                                }">Remove</p>
                             </div>
                             <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn">
                                 <button
@@ -9798,6 +9803,12 @@ const updateQuickCart = () => {
 };
 updateQuickCart();
 
+$("#quick-cart-wrapper").delegate(".quick-cart-remove", "click", function () {
+  const removeValue = $(this).attr("value");
+  $.get(`/cart/change?line=${removeValue}&quantity=0`);
+  updateQuickCart();
+});
+
 $(document).click((event) => {
   if ($("#quick-cart-wrapper").hasClass("cart-delay")) {
     if (!$(event.target).closest("#quick-cart-wrapper").length) {
@@ -9820,4 +9831,13 @@ $(".cart-times").click(function () {
   $(".quick-cart-container").addClass("cart-animation-close");
   $(".quick-cart-container").removeClass("cart-animation-open");
   $(".quick-cart-container").removeClass("cart-delay");
+});
+
+$(".header-cart").click(function () {
+  setTimeout(() => {
+    $(".quick-cart-container").addClass("cart-delay");
+  }, 100);
+
+  $(".quick-cart-container").addClass("cart-animation-open");
+  $(".quick-cart-container").removeClass("cart-animation-close");
 });

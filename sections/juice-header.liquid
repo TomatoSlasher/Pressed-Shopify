@@ -13,14 +13,14 @@
     </nav>
     <a href='/'><img class='header-logo header-section'  src=" {{ "pressed-logo.svg" | asset_url }}" ></a>
 
-    <a href="{{ routes.cart_url }}" class="site-header__icon site-header__cart header-section header-cart">
+    <div class="site-header__icon site-header__cart header-section header-cart">
                 {% include 'icon-cart' %}
                 <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
                 <div id="CartCount" class="site-header__cart-count{% if cart.item_count == 0 %} hide{% endif %} critical-hidden" data-cart-count-bubble>
-                  <span data-cart-count>{{ cart.item_count }}</span>
+                  <span class='header-cart-counter' data-cart-count>{{ cart.item_count }}</span>
                   <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
                 </div>
-    </a>
+    </div>
     </header>
     </div>
     <div class='shop-tab'>
@@ -49,7 +49,6 @@
   </div>
 </div>
 <div class='quick-cart-container' id="quick-cart-wrapper">
-  <h1 class='quick-cart-clear'>clear</h1>
   <div class='quick-cart-header'>
     <p>Cart</p>
     <i class="fas fa-times cart-times"></i>
