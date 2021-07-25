@@ -425,16 +425,27 @@ $.post("/cart/add.js", {
 
 updateQuickCart()
 })
+const currency_symbols = {
+    'USD': '$', // US Dollar
+    'EUR': '€', // Euro
+    'CRC': '₡', // Costa Rican Colón
+    'GBP': '£', // British Pound Sterling
+    'ILS': '₪', // Israeli New Sheqel
+    'INR': '₹', // Indian Rupee
+    'JPY': '¥', // Japanese Yen
+    'KRW': '₩', // South Korean Won
+    'NGN': '₦', // Nigerian Naira
+    'PHP': '₱', // Philippine Peso
+    'PLN': 'zł', // Polish Zloty
+    'PYG': '₲', // Paraguayan Guarani
+    'THB': '฿', // Thai Baht
+    'UAH': '₴', // Ukrainian Hryvnia
+    'VND': '₫', // Vietnamese Dong
+    'TRY': "₺" // Turkish Lira
+};
 
 
-$('.product-template-title').click( function () {
 
-    $( ".quick-cart-container" ).toggleClass( "display-block" )
-});
-$('.cart-times').click( function () {
-
-    $( ".quick-cart-container" ).removeClass( "display-block" )
-});
 const updateQuickCart = () => {
 
     setTimeout(function(){
@@ -471,7 +482,7 @@ const updateQuickCart = () => {
                                     min="1"
                                     type="number"
                                     id="quantity"
-                                    name="quantity"
+                                    name="cart-quantity"
                                     value="${data.quantity}"
                                 />
 
@@ -483,7 +494,7 @@ const updateQuickCart = () => {
                                     +
                                 </button>
                             </div>
-                            <p class='quick-cart-price quick-cart-item-text'>${data.final_line_price / 100}${cartData.currency}</p>
+                            <p class='quick-cart-price quick-cart-item-text'>${currency_symbols[cartData.currency]}${data.final_line_price /100}</p>
                         </div>
                 </div>
 
@@ -492,11 +503,22 @@ const updateQuickCart = () => {
         quickCart.insertAdjacentHTML('afterbegin', cartDataMarkup)
     });
 
-    }, 300);
+    }, 500);
 
 
 }
 updateQuickCart()
+$('.product-template-title').click( function () {
 
+
+    $( ".quick-cart-container").addClass('cart-animation-open')
+    $( ".quick-cart-container").removeClass('cart-animation-close')
+});
+$('.cart-times').click( function () {
+
+
+    $( ".quick-cart-container").addClass('cart-animation-close')
+    $( ".quick-cart-container").removedClass('cart-animation-open')
+});
 </script>
 
