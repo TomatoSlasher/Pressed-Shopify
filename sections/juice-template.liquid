@@ -56,14 +56,7 @@
             <p class='product-template-price' style='font-size: 20px; font-weight: bold;'>{{product.price | money}}</p>
 
             <div class='cart-form'>
-                <form class="featured-cart-form product-cart-form" method="post" action="/cart/add">
-                    <input type="hidden" name="return_to" value="back" />
-                    <input
-                    type="hidden"
-                    name="id"
-                    id='cart-variant'
-                    value="{{  product.variants.first.id  }}"
-                    />
+                <form class="featured-cart-form product-cart-form">
                     <div class="cart-counter-wrapper">
                     <button
                         class="cart-btn"
@@ -88,12 +81,10 @@
                         +
                     </button>
                     </div>
-                    <input
-                    class="add-to-cart template-cart"
-                    type="submit"
-                    value="Add to cart"
+                    <p
+                    class="add-to-cart quick-add-to-cart template-cart"
                     class="btn"
-                    />
+                    >Add to cart</p>
                 </form>
             </div>
         </div>
@@ -377,11 +368,6 @@ variantsItem[0].insertAdjacentHTML('afterbegin', leaf);
 variantsItem[1].insertAdjacentHTML('afterbegin', snow);
 
 
-$('input[type=radio][name=variant]').change(function() {
-    const selectedID = $("input[name='variant']:checked").val();
-    document.getElementById("cart-variant").value = `${selectedID}`;
-});
-
 $(function () {
     "use strict";
     $("nav ul li").on("click", function () {
@@ -409,7 +395,7 @@ quickCart.innerHTML = ''
 $.post("/cart/clear.js")
 
 })
-$('.product-img').click( function (){
+$('.quick-add-to-cart').click( function (){
 
 const selected = $("input[name='variant']:checked").val();
 const quantity = $("input[name='quantity']").val();
@@ -501,24 +487,47 @@ const updateQuickCart = () => {
             `
         ).join("")
         quickCart.insertAdjacentHTML('afterbegin', cartDataMarkup)
+        const quickCartAmount = document.querySelector(".quick-cart-amount");
+        quickCartAmount.innerHTML = ''
+        const totalAmountMarkup = `${currency_symbols[cartData.currency]}${cartData.items_subtotal_price / 100}`
+
+        quickCartAmount.insertAdjacentHTML('afterbegin', totalAmountMarkup)
+
+
     });
 
-    }, 500);
+    }, 600);
 
 
 }
 updateQuickCart()
-$('.product-template-title').click( function () {
 
+$(document).click((event) => {
+
+ if ($("#quick-cart-wrapper").hasClass("cart-delay")){
+
+    if (!$(event.target).closest('#quick-cart-wrapper').length) {
+
+        $( ".quick-cart-container").addClass('cart-animation-close')
+        $( ".quick-cart-container").removeClass('cart-animation-open');
+        $( ".quick-cart-container").removeClass('cart-delay')
+    }
+ }
+
+});
+
+$('.quick-add-to-cart').click( function () {
+    setTimeout( ()=>{
+        $( ".quick-cart-container").addClass('cart-delay')
+    },100)
 
     $( ".quick-cart-container").addClass('cart-animation-open')
     $( ".quick-cart-container").removeClass('cart-animation-close')
 });
 $('.cart-times').click( function () {
-
-
     $( ".quick-cart-container").addClass('cart-animation-close')
-    $( ".quick-cart-container").removedClass('cart-animation-open')
+    $( ".quick-cart-container").removeClass('cart-animation-open')
+    $( ".quick-cart-container").removeClass('cart-delay')
 });
 </script>
 
