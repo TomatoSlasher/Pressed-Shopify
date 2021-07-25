@@ -13,13 +13,7 @@
         <h2>{{ product.title }}</h2>
         <h4>{{ product.price | money }}</h4>
       </div>
-      <form class="featured-cart-form" method="post" action="/cart/add">
-        <input type="hidden" name="return_to" value="back" />
-        <input
-          type="hidden"
-          name="id"
-          value="{{ product.variants.first.id }}"
-        />
+      <form class="featured-cart-form">
         <div class="cart-counter-wrapper">
           <button
             class="cart-btn"
@@ -44,13 +38,10 @@
             +
           </button>
         </div>
-        <input
-          class="add-to-cart"
-          type="submit"
-          value="Add to cart"
-          class="btn"
-
-        />
+        <p
+          class="add-to-cart quick-add-to-cart"
+          value='{{product.variants.first.id}}'
+        >Add to cart</p>
       </form>
 
       <div class="featured-more-info">
@@ -59,7 +50,7 @@
     </div>
   </div>
 
-
+{% endif %}
  {% endfor %}
 </div>
 

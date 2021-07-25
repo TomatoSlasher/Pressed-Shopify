@@ -9660,3 +9660,164 @@ function removeImageLoadingAnimation(image) {
     imageWrapper.removeAttribute("data-image-loading-animation");
   }
 }
+const snow1 = '<i class="far fa-snowflake variant-icon"></i>';
+const leaf1 = '<i class="fas fa-leaf variant-icon"></i>';
+const quickCart = document.querySelector(".quick-cart");
+const quickCartContainer = document.querySelector(".quick-cart-container");
+
+$(".quick-cart-clear").click(function () {
+  quickCart.innerHTML = "";
+  $.post("/cart/clear.js");
+});
+
+$(".quick-add-to-cart").click(function () {
+  const selected = $("input[name='variant']:checked").val();
+  const quantity = $("input[name='quantity']").val();
+  console.log();
+
+  var $this = $(this);
+  let cartId = "";
+  let cartQuantity = "";
+
+  if ($(".quick-add-to-cart").length === 4) {
+    cartId = selected;
+  } else {
+    cartId = $this.attr("value");
+  }
+  if ($(".quick-add-to-cart").length === 4) {
+    cartQuantity = quantity;
+  } else {
+    cartQuantity = $(this)
+      .closest(".featured-cart-form")
+      .find(".cart-counter")
+      .val();
+  }
+  $.post("/cart/add.js", {
+    items: [
+      {
+        quantity: cartQuantity,
+        id: cartId,
+      },
+    ],
+  });
+
+  updateQuickCart();
+});
+const currency_symbols = {
+  USD: "$", // US Dollar
+  EUR: "€", // Euro
+  CRC: "₡", // Costa Rican Colón
+  GBP: "£", // British Pound Sterling
+  ILS: "₪", // Israeli New Sheqel
+  INR: "₹", // Indian Rupee
+  JPY: "¥", // Japanese Yen
+  KRW: "₩", // South Korean Won
+  NGN: "₦", // Nigerian Naira
+  PHP: "₱", // Philippine Peso
+  PLN: "zł", // Polish Zloty
+  PYG: "₲", // Paraguayan Guarani
+  THB: "฿", // Thai Baht
+  UAH: "₴", // Ukrainian Hryvnia
+  VND: "₫", // Vietnamese Dong
+  TRY: "₺", // Turkish Lira
+};
+
+const updateQuickCart = () => {
+  setTimeout(function () {
+    $.get("/cart.js", function (data) {
+      const cartData = JSON.parse(data);
+      console.log(cartData);
+      quickCart.innerHTML = "";
+
+      const cartItems = cartData.items;
+      const cartDataMarkup = cartItems
+        .map(
+          (data) => `
+                <div class='quick-cart-item-container'>
+                        <div class='quick-cart-img-container'>
+                        <img class='quick-cart-img ${data.handle}' src='${
+            data.image
+          }'>
+                        </div>
+                        <div class='quick-cart-text-container'>
+                            <div class='quick-cart-title-container'>
+                                <a href ="${data.url}">
+                                    <p  class='quick-cart-title quick-cart-item-text'>${
+                                      data.product_title
+                                    }</p>
+                                </a>
+                                <p class='quick-cart-variant quick-cart-item-text'>${
+                                  data.variant_title == "Fresh" ? leaf1 : snow1
+                                }${data.variant_title}</p>
+                            </div>
+                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn">
+                                <button
+                                    class="cart-btn  quick-cart-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+                                >
+                                    -
+                                </button>
+
+                                <input
+                                    class="cart-counter quick-cart-btn"
+                                    min="1"
+                                    type="number"
+                                    id="quantity"
+                                    name="cart-quantity"
+                                    value="${data.quantity}"
+                                />
+
+                                <button
+                                    class="cart-btn quick-cart-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+                                >
+                                    +
+                                </button>
+                            </div>
+                            <p class='quick-cart-price quick-cart-item-text'>${
+                              currency_symbols[cartData.currency]
+                            }${data.final_line_price / 100}</p>
+                        </div>
+                </div>
+
+            `
+        )
+        .join("");
+      quickCart.insertAdjacentHTML("afterbegin", cartDataMarkup);
+      const quickCartAmount = document.querySelector(".quick-cart-amount");
+      quickCartAmount.innerHTML = "";
+      const totalAmountMarkup = `${currency_symbols[cartData.currency]}${
+        cartData.items_subtotal_price / 100
+      }`;
+
+      quickCartAmount.insertAdjacentHTML("afterbegin", totalAmountMarkup);
+    });
+  }, 600);
+};
+updateQuickCart();
+
+$(document).click((event) => {
+  if ($("#quick-cart-wrapper").hasClass("cart-delay")) {
+    if (!$(event.target).closest("#quick-cart-wrapper").length) {
+      $(".quick-cart-container").addClass("cart-animation-close");
+      $(".quick-cart-container").removeClass("cart-animation-open");
+      $(".quick-cart-container").removeClass("cart-delay");
+    }
+  }
+});
+
+$(".quick-add-to-cart").click(function () {
+  setTimeout(() => {
+    $(".quick-cart-container").addClass("cart-delay");
+  }, 100);
+
+  $(".quick-cart-container").addClass("cart-animation-open");
+  $(".quick-cart-container").removeClass("cart-animation-close");
+});
+$(".cart-times").click(function () {
+  $(".quick-cart-container").addClass("cart-animation-close");
+  $(".quick-cart-container").removeClass("cart-animation-open");
+  $(".quick-cart-container").removeClass("cart-delay");
+});
