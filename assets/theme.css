@@ -9130,7 +9130,7 @@ hr {
 .header-container {
   display: flex;
   justify-content: space-between;
-
+  z-index: 3 !important;
   width: 100%;
 }
 .active-header {
