@@ -9673,7 +9673,6 @@ $(".quick-cart-clear").click(function () {
 $(".quick-add-to-cart").click(function () {
   const selected = $("input[name='variant']:checked").val();
   const quantity = $("input[name='quantity']").val();
-  console.log();
 
   var $this = $(this);
   let cartId = "";
@@ -9728,7 +9727,7 @@ const updateQuickCart = () => {
       const cartData = JSON.parse(data);
       console.log(cartData);
       quickCart.innerHTML = "";
-      console.log(cartData.items_count);
+
       $(".header-cart-counter").text(`${cartData.item_count}`);
       const cartItems = cartData.items;
       const cartDataMarkup = cartItems
@@ -9755,9 +9754,11 @@ const updateQuickCart = () => {
                                   i + 1
                                 }">Remove</p>
                             </div>
-                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn">
+                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn" value="${
+                              i + 1
+                            }">
                                 <button
-                                    class="cart-btn  quick-cart-btn"
+                                    class="cart-btn  quick-cart-btn quick-cart-counter-btn"
                                     type="button"
                                     onclick="this.parentNode.querySelector('[type=number]').stepDown();"
                                 >
@@ -9765,7 +9766,7 @@ const updateQuickCart = () => {
                                 </button>
 
                                 <input
-                                    class="cart-counter quick-cart-btn"
+                                    class="cart-counter quick-cart-btn quick-cart-counter-input"
                                     min="1"
                                     type="number"
                                     id="quantity"
@@ -9774,7 +9775,7 @@ const updateQuickCart = () => {
                                 />
 
                                 <button
-                                    class="cart-btn quick-cart-btn"
+                                    class="cart-btn quick-cart-btn quick-cart-counter-btn"
                                     type="button"
                                     onclick="this.parentNode.querySelector('[type=number]').stepUp();"
                                 >
@@ -9808,6 +9809,24 @@ $("#quick-cart-wrapper").delegate(".quick-cart-remove", "click", function () {
   $.get(`/cart/change?line=${removeValue}&quantity=0`);
   updateQuickCart();
 });
+
+$("#quick-cart-wrapper").delegate(
+  ".quick-cart-counter-btn",
+  "click",
+  function () {
+    const quantityValue = $(this)
+      .closest(".quick-cart-counter")
+      .find(".quick-cart-counter-input")
+      .val();
+    const LineValue = $(this).closest(".quick-cart-counter");
+    console.log(LineValue.attr("value"));
+
+    $.get(
+      `/cart/change?line=${LineValue.attr("value")}&quantity=${quantityValue}`
+    );
+    updateQuickCart();
+  }
+);
 
 $(document).click((event) => {
   if ($("#quick-cart-wrapper").hasClass("cart-delay")) {
