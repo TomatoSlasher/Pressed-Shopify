@@ -1,8 +1,10 @@
 <div class="product-photos-container">
+  <div class="product-photos-img-container">
   <img class='juice-photos salad-img ' src="{{ "salad.jpg" | asset_url }}"
   alt="" /> <img class='juice-photos lemon-img' src="{{
     "lemon.jpg" | asset_url
   }}" alt="" />
+</div>
   <div class="text-container">
     <div class="text-wrapper">
       <h1>Routine Wellness</h1>
@@ -17,13 +19,240 @@
 </div>
 
 {% schema %} { "presets": [ { "name": "Product Photos" } ] } {% endschema %}
-{% stylesheet %} .product-photos-container{ height: auto; margin-top: 8rem;
-position: relative; } .juice-photos{ position: absolute; } .salad-img { z-index:
-1 ; top: -5rem; border-top-right-radius: 30% ; width: 25rem; left: 18rem }
-.lemon-img { width: 40rem; border-bottom-left-radius: 30% } .text-container {
-position: relative; width: 100%; height: 100vh;} .text-wrapper{ width: 30rem;
-position: absolute; top: 55%; left: 78%; transform: translate(-50%, -50% );
-text-align: center; } .text-wrapper p{ font-size: 20px; margin-bottom: 2rem; }
-.text-wrapper a{background-color: #f58153; padding: 1rem 2rem; color: white
-!important; text-decoration: none; font-weight: bold; border-radius: 5px; }
+{% stylesheet %}
+
+.product-photos-container {
+  height: 40rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rem;
+
+}
+.product-photos-img-container{
+  position: relative;
+    height: 40rem;
+  width: 40rem;
+}
+.juice-photos {
+  position: absolute;
+}
+.salad-img {
+  z-index: 1;
+  border-top-right-radius: 30%;
+  width: 25rem;
+  left: 18rem;
+  top: -4rem;
+}
+.lemon-img {
+  width: 40rem;
+  border-bottom-left-radius: 30%;
+}
+.text-container {
+margin-right: 5rem;
+}
+.text-wrapper {
+  width: 30rem;
+
+  text-align: center;
+}
+.text-wrapper p {
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+.text-wrapper a {
+  background-color: #f58153;
+  padding: 1rem 2rem;
+  color: white !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 1300px) {
+  .salad-img {
+    width: 20rem;
+
+  }
+  .lemon-img {
+    width: 35rem;
+
+  }
+  .text-container {
+  margin-right: 3rem;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  .text-container {
+  margin-right: 1rem;
+  }
+}
+@media only screen and (max-width: 1070px) {
+  .salad-img {
+    width: 15rem;
+
+  }
+  .lemon-img {
+    width: 30rem;
+
+  }
+  .product-photos-img-container{
+    margin-top: 10rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .product-photos-container {
+    height: 30rem;
+  }
+  .salad-img {
+    left: 15rem;
+  }
+  .lemon-img {
+    width: 25rem;
+  }
+  .product-photos-img-container{
+    margin-top: 10rem;
+  }
+  .text-container {
+    margin-bottom: 5rem;
+  }
+    .text-wrapper {
+    width: 27rem;
+  }
+  .text-wrapper p {
+    font-size: 18px;
+  }
+
+}
+@media only screen and (max-width: 930px) {
+    .product-photos-container {
+    height: auto;
+  }
+  .product-photos-img-container{
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5rem;
+
+  }
+  .product-photos-container {
+    display: block;
+  }
+
+  .salad-img {
+    z-index: 1;
+    width: 25rem;
+
+  }
+  .lemon-img {
+    width: 40rem;
+
+  }
+  .text-container {
+    margin-right: 0rem;
+    margin-top: 2rem;
+  }
+
+  .text-wrapper {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .text-wrapper h1 {
+    margin: 0;
+
+  }
+  .text-wrapper p {
+    width: 70%;
+    font-size: 20px;
+    margin: 0;
+    margin: 1rem;
+    margin-bottom: 1.75rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+
+}
+@media only screen and (max-width: 700px) {
+  .product-photos-img-container {
+    height: 35rem;
+    width: 35rem;
+  }
+
+  .salad-img {
+    z-index: 1;
+    width: 20rem;
+  }
+
+  .lemon-img {
+    width: 35rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+}
+@media only screen and (max-width: 600px) {
+  .product-photos-img-container {
+    height: 30rem;
+    width: 30rem;
+  }
+
+  .salad-img {
+    z-index: 1;
+    width: 15rem;
+  }
+
+  .lemon-img {
+    width: 30rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+}
+@media only screen and (max-width: 500px) {
+  .product-photos-img-container {
+    height: 25rem;
+    width: 25rem;
+  }
+
+  .salad-img {
+    z-index: 1;
+    width: 15rem;
+    left: 10rem;
+  }
+
+  .lemon-img {
+    width: 25rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+}
+@media only screen and (max-width: 500px) {
+  .product-photos-img-container {
+    height: 22rem;
+    width: 22rem;
+  }
+
+  .salad-img {
+    z-index: 1;
+    width: 13rem;
+    left: 9rem;
+  }
+
+  .lemon-img {
+    width: 22rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .text-wrapper p {
+    width: 85%;
+  }
+
+}
+@media only screen and (max-width: 430px) {
+ .text-wrapper h1 {
+    font-size: 30px;
+
+  }
+}
 {% endstylesheet %}
