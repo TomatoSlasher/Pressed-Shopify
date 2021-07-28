@@ -5,11 +5,13 @@
     <div class='header-wrapper'>
 
     <header class='header-container'>
-
+      <nav class='nav-hamburger'>
+      {% include 'icon-hamburger' %}
+    </nav>
     <nav class='nav-container header-section'>
-    {% for link in linklists.main-menu.links %}
-      <a href="{{ link.url }}" class='nav-li {{ link.title }}-nav'>{{ link.title }}</a>
-    {% endfor %}
+      {% for link in linklists.main-menu.links %}
+        <a href="{{ link.url }}" class='nav-li {{ link.title }}-nav'>{{ link.title }}</a>
+      {% endfor %}
     </nav>
     <a href='/'><img class='header-logo header-section'  src=" {{ "pressed-logo.svg" | asset_url }}" ></a>
 
@@ -23,7 +25,7 @@
     </div>
     </header>
     </div>
-    <div class='shop-tab'>
+ <div class='shop-tab'>
 
          <i class="fas fa-times"></i>
 
@@ -45,6 +47,29 @@
           <a href='/collections/all' class='shop-tab-all'>Shop All</a>
       </div>
 
+    </div>
+    <div class='hamburger-tab-container'>
+      <div class='hamburger-tab'>
+
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class='hamburgerb-tab-el {{ link.title }}-hamburger'>{{ link.title }}</a>
+        {% endfor %}
+
+        <div class ='shop-tab-container hamburger-tab-container'>
+            {% for collection in collections %}
+          <a href='{{collection.url}}'  class =' hamburger-tab-collection'>
+            <div class ='shop-tab-collection'>
+              <div class='shop-tab-img-container'>
+                <img class='shop-tab-img shop-tab-{{collection.title}}-img' src="{{ collection.featured_image | img_url: '300x' }}">
+              </div>
+              <p class='shop-tab-title' style="font-size: 30px; font-weight: bold;">{{collection.title}}</p>
+              <p class='shop-tab-description'>{{collection.description}} </p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
@@ -74,6 +99,8 @@
 <script>
 
 const navLi = document.querySelectorAll(".nav-li");
+const hamburgerbTabEl = document.querySelectorAll(".hamburgerb-tab-el");
+console.log(hamburgerbTabEl)
 const shopNav = document.querySelector(".Shop-nav");
 const faTimes  = document.querySelectorAll(".fa-times ");
 const arrow = '<i class="fas fa-chevron-down"></i>'
@@ -83,8 +110,12 @@ $(".header-container").removeClass("background-white");
     $(".shop-tab").removeClass("display-block")
 
 })
-
-  navLi[1].insertAdjacentHTML('beforeend', arrow);
+  if(navLi[2]){
+navLi[2].insertAdjacentHTML('beforeend', arrow);
+  }
+if(hamburgerbTabEl[2]){
+hamburgerbTabEl[2].insertAdjacentHTML('beforeend', arrow);
+  }
 
 $(shopNav).hover( function() {
     $(".shop-tab").addClass("display-block");

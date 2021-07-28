@@ -9139,10 +9139,11 @@ hr {
 }
 .header-logo {
   /* width: 10rem; */
-  margin-right: 14rem;
+  /* margin-right: 14rem; */
   margin-top: 1.1rem;
 }
 .nav-container {
+  display: none;
   font-size: 18px;
   margin: 1rem;
   margin-top: 1.6rem;
@@ -9161,6 +9162,66 @@ hr {
   margin-right: 2rem;
 }
 
+.nav-hamburger {
+  cursor: pointer;
+  margin: 1rem;
+  margin-left: 2rem;
+  padding: 9px 0px;
+}
+.hamburger-tab-container {
+  position: relative;
+  display: block;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 90vh;
+}
+.hamburger-tab {
+  position: absolute;
+  width: 98%;
+  height: 90vh;
+  z-index: 10;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-right: 10rem !important;
+}
+.hamburger-tab::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.hamburger-tab::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+.hamburger-tab::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #011c28;
+}
+.hamburgerb-tab-el {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 1rem;
+  display: block;
+  border-bottom: 1px solid #011c28;
+}
+.Shop-hamburger {
+  display: flex;
+  justify-content: space-between;
+}
+.hamburger-tab-container {
+  display: block !important;
+}
+.hamburger-tab-collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .fa-chevron-down {
   margin-left: 0.5rem;
 }
