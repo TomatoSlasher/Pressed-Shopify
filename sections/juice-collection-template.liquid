@@ -5,7 +5,7 @@
 
   <div class="featured-item collection-item">
         <img
-        class="featured-img"
+        class="featured-img collection-featured-img"
         src="{{ product.featured_image | img_url: '600x600' }}"
         alt=""
         />
@@ -40,7 +40,7 @@
           </button>
         </div>
         <p
-          class="add-to-cart quick-add-to-cart"
+          class="add-to-cart quick-add-to-cart collection-add-to-cart"
           value='{{product.variants.first.id}}'
           id="asf"
         >Add to cart</p>
@@ -69,5 +69,28 @@
     .collection-item{
         margin-top: 7rem;
     }
+  @media only screen and (max-width: 1060px) {
+    .collection-container{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .collection-item h2{
+      font-size: 20px;
+    }
+  }
 
+  @media only screen and (max-width: 990px) {
+    .collection-featured-img{
+      top: -6rem;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .collection-featured-img{
+      top: -5rem;
+    }
+  }
+   @media only screen and (max-width: 700px) {
+    .collection-container{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 {% endstylesheet %}

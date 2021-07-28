@@ -8,6 +8,9 @@
       <nav class='nav-hamburger'>
       {% include 'icon-hamburger' %}
     </nav>
+    <nav class='nav-close'>
+      {% include 'icon-close' %}
+    </nav>
     <nav class='nav-container header-section'>
       {% for link in linklists.main-menu.links %}
         <a href="{{ link.url }}" class='nav-li {{ link.title }}-nav'>{{ link.title }}</a>
@@ -55,7 +58,7 @@
           <a href="{{ link.url }}" class='hamburgerb-tab-el {{ link.title }}-hamburger'>{{ link.title }}</a>
         {% endfor %}
 
-        <div class ='shop-tab-container hamburger-tab-container'>
+        <div class ='shop-tab-container hamburger-tab-collection-container'>
             {% for collection in collections %}
           <a href='{{collection.url}}'  class =' hamburger-tab-collection'>
             <div class ='shop-tab-collection'>
@@ -100,7 +103,6 @@
 
 const navLi = document.querySelectorAll(".nav-li");
 const hamburgerbTabEl = document.querySelectorAll(".hamburgerb-tab-el");
-console.log(hamburgerbTabEl)
 const shopNav = document.querySelector(".Shop-nav");
 const faTimes  = document.querySelectorAll(".fa-times ");
 const arrow = '<i class="fas fa-chevron-down"></i>'
@@ -140,4 +142,42 @@ $(function() {
         }
     });
 });
+
+$(".icon-hamburger").click( ()=>{
+
+  $(".hamburger-tab-container").addClass('hamburger-animation-open')
+  $(".hamburger-tab-container").addClass('display-block')
+  $(".hamburger-tab-container").removeClass('hamburger-animation-close')
+  $(".nav-hamburger").addClass('display-none')
+  $(".nav-close").addClass('display-block')
+  $(".header-container").addClass("background-white");
+})
+$(".icon-close").click( ()=>{
+  $(".hamburger-tab-container").removeClass('hamburger-animation-open')
+
+  $(".hamburger-tab-container").addClass('hamburger-animation-close')
+  $(".nav-hamburger").removeClass('display-none')
+  $(".nav-close").removeClass('display-block')
+  $(".header-container").removeClass("background-white");
+  setTimeout(function(){
+    $(".hamburger-tab-container").removeClass('display-block')
+   }, 700);
+})
 </script>
+{% stylesheet %}
+@media only screen and (max-width: 800px) {
+
+  .nav-hamburger {
+    display: block;
+  }
+  .nav-container {
+    display: none;
+  }
+  .header-logo {
+
+  margin-right: 0rem;
+  margin-top: 1.1rem;
+  }
+
+}
+{% endstylesheet %}

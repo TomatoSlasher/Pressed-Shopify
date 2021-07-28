@@ -57,7 +57,7 @@
 
             <div class='cart-form'>
                 <form class="featured-cart-form product-cart-form">
-                    <div class="cart-counter-wrapper">
+                    <div class="cart-counter-wrapper product-cart-counter-wrapper">
                     <button
                         class="cart-btn cart-btn-template cart-btn-template-minus"
                         type="button"
@@ -431,7 +431,7 @@ const productImg = document.querySelector(".product-img");
 
     }
 }
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 990px) {
     .main-content-container{
         display: block;
     }
@@ -454,14 +454,14 @@ const productImg = document.querySelector(".product-img");
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
-    .cart-counter-wrapper {
-        width: 70%;
+    .product-cart-counter-wrapper {
+        width: 60%;
         border-top-right-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
     }
 
     .cart-counter-template {
-        width: 100%;
+        width: 67%;
     }
     .product-text-container {
         width : 100%;
@@ -475,6 +475,11 @@ const productImg = document.querySelector(".product-img");
 
 
 
+    }
+
+
+    .cart-counter-template {
+        width: 64%;
     }
 }
 @media only screen and (max-width: 680px) {

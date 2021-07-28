@@ -2,9 +2,9 @@
   {% for product in collections.all.products %} {% if product.tags contains
   'bottle' %}
 
-  <div class="featured-item">
+  <div class="featured-item home-featured-item">
     <img
-      class="featured-img"
+      class="featured-img home-featured-img"
       src="{{ product.featured_image | img_url: '600x600' }}"
       alt=""
     />
@@ -13,8 +13,8 @@
         <h2>{{ product.title }}</h2>
         <h4>{{ product.price | money }}</h4>
       </div>
-      <form class="featured-cart-form">
-        <div class="cart-counter-wrapper">
+      <form class="featured-cart-form home-featured-cart-form">
+        <div class="cart-counter-wrapper home-cart-counter-wrapper">
           <button
             class="cart-btn"
             type="button"
@@ -39,7 +39,7 @@
           </button>
         </div>
         <p
-          class="add-to-cart quick-add-to-cart"
+          class="add-to-cart quick-add-to-cart home-add-to-cart"
           value='{{product.variants.first.id}}'
         >Add to cart</p>
       </form>
@@ -80,17 +80,16 @@ background-color:#EFEFEF; margin: 0; padding: .75rem 1rem; border: none; }
   .featured-item{
     margin-bottom: 0;
   }
-  .featured-cart-form {
+  .home-featured-cart-form {
     display: block;
-
   }
-  .cart-counter-wrapper{
+  .home-cart-counter-wrapper{
     margin-right:  0.5rem;
     display: flex;
     justify-content: space-between;
     border-radius: 5px !important;
   }
-  .add-to-cart {
+  .home-add-to-cart {
     margin-top: 1rem;
   }
   .featured-more-info{
@@ -103,22 +102,22 @@ background-color:#EFEFEF; margin: 0; padding: .75rem 1rem; border: none; }
   }
 }
 @media only screen and (max-width: 930px) {
-  .featured-img {
+home-  .featured-img {
   top: -6rem;
   }
 }
 @media only screen and (max-width: 870px) {
-  .featured-img {
+  .home-featured-img {
   top: -5rem;
   }
 }
 @media only screen and (max-width: 830px) {
-  .featured-img {
+  .home-featured-img {
   top: -4rem;
   }
 }
 @media only screen and (max-width: 800px) {
-  .featured-img {
+  .home-featured-img {
   top: -5rem;
   }
   .featured-products {
@@ -135,7 +134,7 @@ background-color:#EFEFEF; margin: 0; padding: .75rem 1rem; border: none; }
     border-radius: 5px !important;
     height: 45px;
   }
-  .featured-item{
+  .home-featured-item{
    margin-right: auto;
    margin-left: auto;
    margin-bottom: 5rem;
