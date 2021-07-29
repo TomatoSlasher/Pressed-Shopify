@@ -9754,7 +9754,7 @@ const updateQuickCart = () => {
                                   i + 1
                                 }">Remove</p>
                             </div>
-                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn" value="${
+                            <div class="cart-counter-wrapper quick-cart-counter quick-cart-counter-mobile quick-cart-btn" value="${
                               i + 1
                             }">
                                 <button
@@ -9782,9 +9782,45 @@ const updateQuickCart = () => {
                                     +
                                 </button>
                             </div>
-                            <p class='quick-cart-price quick-cart-item-text'>${
+                            <p class='quick-cart-price quick-cart-item-text quick-cart-price-mobile'>${
                               currency_symbols[cartData.currency]
                             }${data.final_line_price / 100}</p>
+
+
+                            <div class='quick-cart-counter-price'>
+                             <p class='quick-cart-price quick-cart-item-text'>${
+                               currency_symbols[cartData.currency]
+                             }${data.final_line_price / 100}</p>
+                              <div class="cart-counter-wrapper quick-cart-counter quick-cart-btn" value="${
+                                i + 1
+                              }">
+                                <button
+                                    class="cart-btn  quick-cart-btn quick-cart-counter-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepDown();"
+                                >
+                                    -
+                                </button>
+
+                                <input
+                                    class="cart-counter quick-cart-btn quick-cart-counter-input"
+                                    min="1"
+                                    type="number"
+                                    id="quantity"
+                                    name="cart-quantity"
+                                    value="${data.quantity}"
+                                />
+
+                                <button
+                                    class="cart-btn quick-cart-btn quick-cart-counter-btn"
+                                    type="button"
+                                    onclick="this.parentNode.querySelector('[type=number]').stepUp();"
+                                >
+                                    +
+                                </button>
+                            </div>
+                            </div>
+
                         </div>
                 </div>
 

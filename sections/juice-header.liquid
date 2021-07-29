@@ -77,10 +77,10 @@
   </div>
 </div>
 <div class='quick-cart-container' id="quick-cart-wrapper">
-  <div class='quick-cart-header'>
+  <d  iv class='quick-cart-header'>
     <p>Cart</p>
     <i class="fas fa-times cart-times"></i>
-  </div>
+  </d>
 
 
     <div class='quick-cart'>
@@ -165,7 +165,39 @@ $(".icon-close").click( ()=>{
 })
 </script>
 {% stylesheet %}
+@media only screen and (max-width: 1320px) {
+.quick-cart-container {
+
+    width: 55vw;
+
+}
+
+
+}
+@media only screen and (max-width: 1110px) {
+.quick-cart-container {
+
+    width: 65vw;
+
+}
+
+
+}
+@media only screen and (max-width: 950px) {
+.quick-cart-container {
+
+    width: 80vw;
+
+}
+
+
+}
+
 @media only screen and (max-width: 800px) {
+  .quick-cart-container {
+
+    width: 100vw;
+  }
 
   .nav-hamburger {
     display: block;
@@ -179,5 +211,64 @@ $(".icon-close").click( ()=>{
   margin-top: 1.1rem;
   }
 
+}
+@media only screen and (max-width: 600px) {
+  .quick-cart-counter-btn{
+   padding: .7rem ;
+  }
+
+  .quick-cart-title-container {
+    width: 7rem;
+}
+
+}
+@media only screen and (max-width: 530px) {
+  .quick-cart-counter-mobile{
+    display: none;
+  }
+  .quick-cart-price-mobile{
+    display: none;
+  }
+  .quick-cart-counter-price {
+    display: block;
+  }
+  .quick-cart-counter-price p{
+    margin: 0;
+    margin: 1rem;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .quick-cart-checkout-container {
+    display: block;
+  }
+  .quick-cart-total-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+  }
+  .quick-cart-checkout-btn {
+    width:100%;
+    margin: 1rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .quick-cart-item-container {
+    margin: .5rem .5rem
+  }
+  .quick-cart-header {
+        margin: .5rem 1rem
+  }
+}
+@media only screen and (max-width: 390px) {
+
+  .quick-cart-title-container {
+    width: 6rem;
+  }
+  .quick-cart-counter-btn {
+    padding: .5rem;
+  }
+  .cart-counter {
+      padding: 0rem
+  }
 }
 {% endstylesheet %}

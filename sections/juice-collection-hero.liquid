@@ -23,10 +23,10 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
 
 
         ingredientsImg.src="{{ "shot.png" | asset_url }}"
-        ingredientsImg.style.right= '-6rem'
-        ingredientsImg.style.top = '2rem'
-        ingredientsImg.style.width = '50rem'
 
+        ingredientsImg.classList.add('collection-shot-img')
+        $('.collection-hero-text-container').addClass('shot-collection-hero-text-container')
+        $('.collection-hero-container').addClass('shot-collection-hero-container')
         collectionHeroTitle.innerText = 'Starter Sets'
         collectionHeroText.innerText = 'New to Pressed? Sample the best of what Pressed has to offer,Fire up your system on the daily with a concentrated dose of wellness.'
 </script>
@@ -44,6 +44,7 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
 
 {% endif %}
 {% stylesheet %}
+
         @keyframes move {
         0% {
 
@@ -104,21 +105,28 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         right: -12rem;
         animation: move 5s ease-in-out infinite;
         top: 10rem;
-
     }
     .collection-hero-greens{
         left: -14rem;
         transform: rotate(40deg);
         top: -4rem;
         animation: move2 4s ease-in-out infinite;
+    }
+    .collection-shot-img{
+        width: 55rem;
+    }
+    .shot-collection-hero-text-container{
+        margin-top: 19rem;
 
     }
 @media only screen and (max-width: 1100px) {
+
     .collection-hero-text-container{
         margin-left: 10rem;
         margin-top: 17rem;
 
     }
+
     .collection-hero-orange{
         top: 13rem;
     }
@@ -149,6 +157,13 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
     .collection-hero-container{
         margin-bottom: 18rem;
     }
+    .shot-collection-hero-container{
+        margin-bottom: 12rem;
+    }
+    .shot-collection-hero-text-container{
+        margin-top: 25rem;
+
+    }
 }
 @media only screen and (max-width: 800px) {
     .collection-hero-greens{
@@ -172,10 +187,6 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
     }
     .collection-hero-container{
         margin-bottom: 15rem;
-
-    }
-    .collection-hero-img{
-        width: 35rem;
 
     }
 
@@ -205,6 +216,18 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
 
     }
 
+    .collection-hero-img{
+        width: 35rem;
+
+    }
+    .collection-shot-img{
+        right: -9rem;
+        top: 25rem;
+        width: 55rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 12rem;
+    }
 
 }
 @media only screen and (max-width: 660px) {
@@ -214,7 +237,11 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
 
 
     }
+    .collection-shot-img{
 
+        top: 30rem;
+        width: 60rem;
+    }
 }
 @media only screen and (max-width: 580px) {
     .collection-hero-side-title{
@@ -251,6 +278,13 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         margin-bottom: 12rem;
 
     }
+    .collection-shot-img{
+        top: 20rem;
+        width: 60rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 8rem;
+    }
 }
 @media only screen and (max-width: 520px) {
    .collection-hero-text{
@@ -268,11 +302,19 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
     }
     .collection-hero-orange{
         top: 30rem;
-        right: -10rem
+        right: -10rem;
     }
     .collection-hero-container{
         margin-bottom: 14rem;
 
+    }
+    .collection-shot-img{
+        right: -5rem;
+        top: 28rem;
+        width: 60rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 8rem;
     }
 }
 @media only screen and (max-width: 430px) {
@@ -301,6 +343,14 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         left: -10rem;
         top: 0rem;
     }
+    .collection-shot-img{
+        right: -5rem;
+        top: 28rem;
+        width: 60rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 8rem;
+    }
 }
 @media only screen and (max-width: 380px) {
     .collection-hero-text-container{
@@ -327,7 +377,14 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         font-size: 17px;
         width: 20rem;
 
-
+    }
+    .collection-shot-img{
+        right: -4rem;
+        top: 29rem;
+        width: 60rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 6rem;
     }
 }
 @media only screen and (max-width: 350px) {
@@ -347,6 +404,14 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         width: 18rem;
 
 
+    }
+    .collection-shot-img{
+        right: -5rem;
+        top: 28rem;
+        width: 60rem;
+    }
+    .shot-collection-hero-container{
+        margin-bottom: 8rem;
     }
 }
 {% endstylesheet %}
