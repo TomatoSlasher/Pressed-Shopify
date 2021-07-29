@@ -4,13 +4,12 @@
     {{ "greens1nobg.png" | asset_url }}" alt="">
     <img class="collection-hero-img collection-hero-orange" src="
     {{ "orangenobg.png" | asset_url }}" alt="">
+
     <div class= 'collection-hero-text-container'>
-
-
-        <p class='collection-hero-side-title'>Deliciously Plant-Forward</p>
-        <h1 class ='collection-hero-title'>Cold Pressed Juices</h1>
-        <p class ='collection-hero-text'>
-    Our entirely plant-based menu is designed to make plant-forward living as accessible and delicious as possible,Whether you crave a monthly reset or daily wellness support, our half-day fasts, full-day cleanses and everyday routines deliver high-powered nutrition to fuel your best, most vibrant life.</p>
+            <p class='collection-hero-side-title'>Deliciously Plant-Forward</p>
+            <h1 class ='collection-hero-title'>Cold Pressed Juices</h1>
+            <p class ='collection-hero-text'>
+            Our entirely plant-based menu is designed to make plant-forward living as accessible and delicious as possible,Whether you crave a monthly reset or daily wellness support, our half-day fasts, full-day cleanses and everyday routines deliver high-powered nutrition to fuel your best, most vibrant life.</p>
     </div>
 
 </div>
@@ -74,15 +73,18 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         }
     }
     .collection-hero-container{
-        margin-bottom: 3rem;
+        margin-bottom: 12rem;
     }
     .collection-hero-text-container{
         margin-left: 15rem;
         margin-top: 17rem;
+        position: relative;
+        z-index: 1;
     }
     .collection-hero-img{
         position: absolute;
         width: 40rem;
+
     }
     .collection-hero-side-title{
         font-size: 25px;
@@ -91,15 +93,17 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
     }
     .collection-hero-title{
         font-size: 40px;
-        line-height: 2rem;
+
     }
     .collection-hero-text{
-        width: 40rem;
+        width: 45rem;
+         font-size: 20px;
+
     }
     .collection-hero-orange{
         right: -12rem;
         animation: move 5s ease-in-out infinite;
-        top: -2rem;
+        top: 10rem;
 
     }
     .collection-hero-greens{
@@ -109,4 +113,240 @@ const collectionHeroText = document.querySelector(".collection-hero-text");
         animation: move2 4s ease-in-out infinite;
 
     }
+@media only screen and (max-width: 1100px) {
+    .collection-hero-text-container{
+        margin-left: 10rem;
+        margin-top: 17rem;
+
+    }
+    .collection-hero-orange{
+        top: 13rem;
+    }
+    .collection-hero-greens{
+        left: -17rem;
+
+
+    }
+
+    .collection-hero-container{
+        margin-bottom: 15rem;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+     .collection-hero-text-container{
+        margin-left: 7rem;
+        margin-top: 20rem;
+
+    }
+    .collection-hero-orange{
+        top: 20rem;
+    }
+    .collection-hero-text{
+        width: 40rem;
+
+    }
+    .collection-hero-container{
+        margin-bottom: 18rem;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .collection-hero-greens{
+        left: -13rem;
+
+
+    }
+     .collection-hero-text-container{
+        margin-left: 4rem;
+        margin-top: 20rem;
+
+
+    }
+    .collection-hero-orange{
+        top: 24rem;
+    }
+    .collection-hero-text{
+        width: 40rem;
+
+
+    }
+    .collection-hero-container{
+        margin-bottom: 15rem;
+
+    }
+    .collection-hero-img{
+        width: 35rem;
+
+    }
+
+}
+@media only screen and (max-width: 800px) {
+    .collection-hero-greens{
+        left: -14rem;
+        top: -2rem;
+
+    }
+     .collection-hero-text-container{
+        margin-left: 2rem;
+        margin-top: 25rem;
+
+
+    }
+    .collection-hero-orange{
+        top: 32rem;
+    }
+    .collection-hero-text{
+        width: 39rem;
+
+
+    }
+    .collection-hero-container{
+        margin-bottom: 18rem;
+
+    }
+
+
+}
+@media only screen and (max-width: 660px) {
+
+    .collection-hero-text{
+        width: 34rem;
+
+
+    }
+
+}
+@media only screen and (max-width: 580px) {
+    .collection-hero-side-title{
+
+        line-height: 0rem;
+
+    }
+     .collection-hero-text-container{
+        margin-left: 1.5rem;
+        margin-top: 20rem;
+    }
+
+    .collection-hero-side-title {
+        font-size: 20px;
+
+    }
+    .collection-hero-title {
+        font-size: 35px;
+
+    }
+    .collection-hero-text{
+        width: 30rem;
+        font-size: 18px;
+
+    }
+    .collection-hero-img{
+        width: 30rem;
+        z-index: 0;
+    }
+    .collection-hero-orange{
+        top: 25rem;
+    }
+    .collection-hero-container{
+        margin-bottom: 12rem;
+
+    }
+}
+@media only screen and (max-width: 520px) {
+   .collection-hero-text{
+        width: 25rem;
+
+
+    }
+    .collection-hero-text-container{
+        margin-left: 1.5rem;
+        margin-top: 22rem;
+    }
+    .collection-hero-greens {
+        left: -13rem;
+        top: -1rem;
+    }
+    .collection-hero-orange{
+        top: 30rem;
+        right: -10rem
+    }
+    .collection-hero-container{
+        margin-bottom: 14rem;
+
+    }
+}
+@media only screen and (max-width: 430px) {
+    .collection-hero-text-container{
+
+        margin-top: 23rem;
+    }
+    .collection-hero-container{
+        margin-bottom: 8rem;
+
+    }
+    .collection-hero-title {
+        font-size: 30px;
+
+    }
+    .collection-hero-orange{
+        top: 32rem;
+        right: -10rem
+    }
+    .collection-hero-text{
+        width: 22rem;
+
+
+    }
+    .collection-hero-greens {
+        left: -10rem;
+        top: 0rem;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .collection-hero-text-container{
+        margin-left: 1rem;
+        margin-top: 22rem;
+    }
+    .collection-hero-greens {
+        left: -10rem;
+        top: 1rem;
+    }
+    .collection-hero-container{
+        margin-bottom: 12rem;
+
+    }
+    .collection-hero-title {
+        font-size: 28px;
+
+    }
+    .collection-hero-orange{
+        top: 37rem;
+        right: -8rem
+    }
+    .collection-hero-text{
+        font-size: 17px;
+        width: 20rem;
+
+
+    }
+}
+@media only screen and (max-width: 350px) {
+
+    .collection-hero-greens {
+        left: -9rem;
+        top: 3rem;
+    }
+
+    .collection-hero-title {
+        font-size: 26px;
+
+    }
+
+    .collection-hero-text{
+        font-size: 16px;
+        width: 18rem;
+
+
+    }
+}
 {% endstylesheet %}
